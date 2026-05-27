@@ -114,6 +114,22 @@ $(function() {
 		$(".ceilModuleLR").toggleClass('is-checked');
 	});
 
+	$('.symmetryFirst1').on("click", function(e) {
+		$(".symmetryCheck1").toggleClass('is-checked2');
+	});
+
+	$('.symmetryFirst2').on("click", function(e) {
+		$(".symmetryCheck2").toggleClass('is-checked2');
+	});
+
+	$('.symmetrySecond1').on("click", function(e) {
+		$(".symmetryCheck3").toggleClass('is-checked2');
+	});
+
+	$('.symmetrySecond2').on("click", function(e) {
+		$(".symmetryCheck4").toggleClass('is-checked2');
+	});
+
 	$("div.markdown-body").removeClass('container-lg');
 
 	$(".start-button").click(function () {
@@ -1356,6 +1372,1585 @@ else if (document.title == "Пример")
 	}); 
 }
 
+//---------------------------parametric-example-2---------------------------//
+
+else if (document.title == "Пример 2")
+{
+	var PI = Math.PI;
+	var borderValue = 6;
+	var borders = [-borderValue, borderValue, borderValue, -borderValue];
+	var border2Value = 8;
+	var borders2 = [-border2Value, border2Value, border2Value, -border2Value];
+
+	var color1 = '#7c83ff';
+	var color2 = '#002897';
+	var color3 = '#ff0000';
+	var color4 = '#ff0000';
+	var color5 = '#7c83ff';
+	var color6 = '#11cc30';
+
+	var colorForText = '#000';
+	var colorForPoints = '#000';
+	var colorForAsymptotes = '#000';
+
+	var slider = document.getElementById('tSlider2');
+	var textAsymptote1 = document.getElementById('textAsymptote1');
+	var textAsymptote2 = document.getElementById('textAsymptote2');
+
+	var positionTextX = borderValue - 0.25;
+	var positionTextY = borderValue - 0.25;
+
+	var mainBoard = JXG.JSXGraph.initBoard('bigParametricPlot', {
+		defaultAxes: { y: { ticks: { visible: false } }, x: { ticks: { visible: false } } },
+		boundingbox: borders,
+		registerEvents: false,
+		showNavigation: false,
+		showCopyright: false,
+		axis: true,
+		grid: true
+	});
+	mainBoard.create('text', [positionTextX, -0.5, '$$x$$'], { fontSize: 22, color: colorForText });
+	mainBoard.create('text', [0.075, positionTextY, '$$y$$'], { fontSize: 22, color: colorForText });
+	var mainGraph1 = mainBoard.create('curve', [[0], [0]], { strokeColor: color1, strokeWidth: 3 }); //[0]?
+	var mainGraph2 = mainBoard.create('curve', [[0], [0]], { strokeColor: color2, strokeWidth: 3 });
+	var mainGraph3 = mainBoard.create('curve', [[0], [0]], { strokeColor: color3, strokeWidth: 3 });
+	var mainGraph4 = mainBoard.create('curve', [[0], [0]], { strokeColor: color4, strokeWidth: 3 });
+	var mainGraph5 = mainBoard.create('curve', [[0], [0]], { strokeColor: color5, strokeWidth: 3 });
+
+	var specialPoint1 = mainBoard.create('point', [-2 / Math.sqrt(2), 1], { name: '', size: 3, color: colorForPoints });
+	specialPoint1.setAttribute({ visible: false });
+
+	var widthForAsymptotes = 2.5;
+	var opacityForAsymptotes = 0.2;
+	var opacityForAsymptotesVisible = 1;
+	const asymptoteBaseMainBoard = {
+		dash: 3,
+		strokeWidth: widthForAsymptotes,
+		strokeColor: colorForAsymptotes,
+		strokeOpacity: opacityForAsymptotes
+	};
+
+	var edgeX = 10;
+	var middleXVertical = 3;
+	var middleXFunc = 2.5;
+	var asymptotesMainBoard = [];
+	const verticalSegments = [
+		[ -1, -edgeX, -middleXVertical ], //firstSegment [0]
+		[ -1, -middleXVertical, middleXVertical ],
+		[ -1, middleXVertical, edgeX ], //[2]
+		[ 1, -edgeX, -middleXVertical ], //[3]
+		[ 1, -middleXVertical, middleXVertical ],
+		[ 1, middleXVertical, edgeX ], //[5]
+	];
+	verticalSegments.forEach(([x, y1, y2]) => {
+		var asymptote = mainBoard.create('segment', [[x, y1], [x, y2]], {
+			...asymptoteBaseMainBoard
+		});
+		asymptotesMainBoard.push(asymptote);
+	});
+	const funcSegments = [
+		{ f: x => -0.5 * x, start: -edgeX, end: -middleXFunc }, //[6]
+		{ f: x => -0.5 * x, start: -middleXFunc, end: middleXFunc },
+		{ f: x => -0.5 * x, start: middleXFunc, end: edgeX }, //[8]
+		{ f: x => 0.5 * x, start: -edgeX, end: -middleXFunc }, //[9]
+		{ f: x => 0.5 * x, start: -middleXFunc, end: middleXFunc },
+		{ f: x => 0.5 * x, start: middleXFunc, end: edgeX }, //[11]
+	];
+	funcSegments.forEach(({ f, start, end }) => {
+		var asymptote = mainBoard.create('functiongraph', [f, start, end], {
+			...asymptoteBaseMainBoard
+		});
+		asymptotesMainBoard.push(asymptote);
+	});
+
+	var firstSegment = 6;
+	var secondSegment = 2;
+	var thirdSegment = 0;
+	var fourthSegment = 9;
+	var fifthSegment = 11;
+	var sixthSegment = 5;
+	var seventhSegment = 3;
+	var eighthSegment = 8;
+
+	specialPoint1.setAttribute({ visible: true });
+	asymptotesMainBoard[firstSegment].setAttribute({
+		opacity: opacityForAsymptotesVisible
+	});
+
+	var x1 = [], y1 = [];
+	var x2 = [], y2 = [];
+	var x3 = [], y3 = [];
+	var x4 = [], y4 = [];
+	var x5 = [], y5 = [];
+	
+	var pi200 = PI / 200;
+	for (var i = 1; i < 51; i++)
+	{
+		var t = -PI + i * pi200;
+		x1.push(1 / Math.sin(t));
+		y1.push(1 / Math.sin(2 * t));
+	}
+	for (var i = 51; i < 100; i++)
+	{
+		var t = -PI + i * pi200;
+		x2.push(1 / Math.sin(t));
+		y2.push(1 / Math.sin(2 * t));
+	}
+	for (var i = 1; i < 100; i++)
+	{
+		var t = -PI / 2 + i * pi200;
+		x3.push(1 / Math.sin(t));
+		y3.push(1 / Math.sin(2 * t));
+	}
+	for (var i = 1; i < 100; i++)
+	{
+		var t = i * pi200;
+		x4.push(1 / Math.sin(t));
+		y4.push(1 / Math.sin(2 * t));
+	}
+	for (var i = 1; i < 100; i++)
+	{
+		var t = PI / 2 + i * pi200;
+		x5.push(1 / Math.sin(t));
+		y5.push(1 / Math.sin(2 * t));
+	}
+
+	mainGraph1.updateDataArray = function()
+	{
+		var i_end = 50;
+		var value = slider.value;
+		var dataX = [], dataY = [];
+		if (value <= i_end)
+		{
+			for (var i = 0; i < value; i++)
+			{
+				dataX.push(x1[i]);
+				dataY.push(y1[i]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+			specialPoint1.setAttribute({ visible: true });
+			asymptotesMainBoard[firstSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote1.classList.remove("text-weight-normal");
+			textAsymptote1.classList.add("text-weight-bolder");
+		}
+		else
+		{
+			this.dataX = x1;
+			this.dataY = y1;
+			specialPoint1.setAttribute({ visible: true });
+			asymptotesMainBoard[firstSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote1.classList.add("text-weight-normal");
+			textAsymptote1.classList.remove("text-weight-bolder");
+		}
+	}
+	mainGraph2.updateDataArray = function()
+	{ 
+		var i_start = 51;
+		var i_end = i_start + 49;
+		var value = slider.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x2[i - i_start]);
+				dataY.push(y2[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+			asymptotesMainBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote2.classList.remove("text-weight-normal");
+			textAsymptote2.classList.add("text-weight-bolder");
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x2;
+			this.dataY = y2;
+			asymptotesMainBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote2.classList.add("text-weight-normal");
+			textAsymptote2.classList.remove("text-weight-bolder");
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+			asymptotesMainBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote2.classList.add("text-weight-normal");
+			textAsymptote2.classList.remove("text-weight-bolder");
+		}
+	}
+	mainGraph3.updateDataArray = function()
+	{ 
+		var i_start = 100;
+		var i_end = i_start + 99;
+		var value = slider.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x3[i - i_start]);
+				dataY.push(y3[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x3;
+			this.dataY = y3;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+	mainGraph4.updateDataArray = function()
+	{ 
+		var i_start = 200;
+		var i_end = i_start + 99;
+		var value = slider.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x4[i - i_start]);
+				dataY.push(y4[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x4;
+			this.dataY = y4;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+	mainGraph5.updateDataArray = function()
+	{ 
+		var i_start = 300;
+		var i_end = i_start + 99;
+		var value = slider.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x5[i - i_start]);
+				dataY.push(y5[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x5;
+			this.dataY = y5;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+
+	function draw()
+	{
+		mainBoard.suspendUpdate();
+
+		mainGraph1.updateDataArray();
+		mainGraph2.updateDataArray();
+		mainGraph3.updateDataArray();
+		mainGraph4.updateDataArray();
+		mainGraph5.updateDataArray();
+
+		mainBoard.unsuspendUpdate();
+	}
+
+	var ceilSymmetry1 = document.getElementById('ceilSymmetry1');
+	var ceilSymmetry2 = document.getElementById('ceilSymmetry2');
+	
+	var symmetryBoard = JXG.JSXGraph.initBoard('bigParametricPlotSymmetry', {
+		defaultAxes: { y: { ticks: { visible: false } }, x: { ticks: { visible: false } } },
+		boundingbox: borders,
+		registerEvents: false,
+		showNavigation: false,
+		showCopyright: false,
+		axis: true,
+		grid: true
+	});
+	var symmetryLabel1 = symmetryBoard.create('text', [positionTextX, -0.5, '$$x$$'], { fontSize: 22, color: colorForText });
+	var symmetryLabel2 = symmetryBoard.create('text', [0.075, positionTextY, '$$y$$'], { fontSize: 22, color: colorForText });
+	var symmetryGraph1 = symmetryBoard.create('curve', [
+		function(t) { return 1/Math.sin(t) },
+		function(t) { return 1/Math.sin(2 * t) },
+		-PI, -3 * PI / 4
+	], { strokeColor: color1, strokeWidth: 3 });
+	var symmetryGraph2 = symmetryBoard.create('curve', [
+		function(t) { return 1/Math.sin(t) },
+		function(t) { return 1/Math.sin(2 * t) },
+		-3 * PI / 4, -PI / 2
+	], { strokeColor: color2, strokeWidth: 3 });
+	var symmetryGraph3 = symmetryBoard.create('curve', [
+		function(t) { return 1/Math.sin(t) },
+		function(t) { return 1/Math.sin(2 * t) },
+		-PI / 2, 0
+	], { dash: 3, strokeColor: color3, strokeWidth: 3 });
+	var symmetryGraph4 = symmetryBoard.create('curve', [
+		function(t) { return 1/Math.sin(t) },
+		function(t) { return 1/Math.sin(2 * t) },
+		0, PI / 2
+	], { dash: 3, strokeColor: color4, strokeWidth: 3 });
+	var symmetryGraph5 = symmetryBoard.create('curve', [
+		function(t) { return 1/Math.sin(t) },
+		function(t) { return 1/Math.sin(2 * t) },
+		PI / 2, PI
+	], { dash: 3, strokeColor: color5, strokeWidth: 3 });
+	symmetryGraph3.setAttribute({ visible: false });
+	symmetryGraph4.setAttribute({ visible: false });
+	symmetryGraph5.setAttribute({ visible: false });
+
+	symmetryBoard.create('point', [-2 / Math.sqrt(2), 1], { name: '', size: 3, color: colorForPoints });
+
+	symmetryBoard.create('functiongraph', [function(x) { return 0.5 * x; }], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	symmetryBoard.create('functiongraph', [function(x) { return -0.5 * x; }], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	symmetryBoard.create('line', [[1, -10], [1, 10]], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	symmetryBoard.create('line', [[-1, -10], [-1, 10]], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+
+	function showSymmetry1() {
+		if (ceilSymmetry1.classList.contains('is-checked2')) {
+			symmetryGraph3.setAttribute({ visible: false });
+			ceilSymmetry2.classList.add('hidden');
+			ceilSymmetry2.classList.remove('is-checked2');
+			symmetryGraph4.setAttribute({ visible: false });
+			symmetryGraph5.setAttribute({ visible: false });
+		} else {
+			symmetryGraph3.setAttribute({ visible: true });
+			ceilSymmetry2.classList.remove('hidden');
+		}
+		symmetryBoard.fullUpdate();
+	}
+	function showSymmetry2() {
+		if (ceilSymmetry2.classList.contains('is-checked2')) {
+			symmetryGraph4.setAttribute({ visible: false });
+			symmetryGraph5.setAttribute({ visible: false });
+		} else {
+			symmetryGraph4.setAttribute({ visible: true });
+			symmetryGraph5.setAttribute({ visible: true });
+		}
+		symmetryBoard.fullUpdate();
+	}
+
+	var offsetX = 1.5;
+	var offsetY = 2;
+
+	var positionTextXOffset = border2Value - 0.35;
+	var positionTextYOffset = border2Value - 0.25;
+
+	var slider2 = document.getElementById('tSlider3');
+
+	var mainBoard2 = JXG.JSXGraph.initBoard('bigParametricPlot2', {
+		defaultAxes: { y: { ticks: { visible: false } }, x: { ticks: { visible: false } } },
+		boundingbox: borders2,
+		registerEvents: false,
+		showNavigation: false,
+		showCopyright: false,
+		axis: true,
+		grid: true
+	});
+	mainBoard2.create('text', [positionTextXOffset, -0.6, '$$x$$'], { fontSize: 22, color: colorForText });
+	mainBoard2.create('text', [0.1, positionTextYOffset, '$$y$$'], { fontSize: 22, color: colorForText });
+	var mainGraph21 = mainBoard2.create('curve', [[0], [0]], { strokeColor: color1, strokeWidth: 3 });
+	var mainGraph22 = mainBoard2.create('curve', [[0], [0]], { strokeColor: color2, strokeWidth: 3 });
+	var mainGraph23 = mainBoard2.create('curve', [[0], [0]], { strokeColor: color3, strokeWidth: 3 });
+	var mainGraph24 = mainBoard2.create('curve', [[0], [0]], { strokeColor: color4, strokeWidth: 3 });
+	var mainGraph25 = mainBoard2.create('curve', [[0], [0]], { strokeColor: color5, strokeWidth: 3 });
+
+	var specialPoint21 = mainBoard2.create('point', [-2 / Math.sqrt(2) + offsetX, 1 + offsetY], { name: '', size: 3, color: colorForPoints });
+	specialPoint21.setAttribute({ visible: false });
+
+	mainBoard2.create('functiongraph', [function(x) { return 0.5 * (x - offsetX) + offsetY; }], { dash: 3, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	mainBoard2.create('functiongraph', [function(x) { return -0.5 * (x - offsetX) + offsetY; }], { dash: 3, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	mainBoard2.create('line', [[1 + offsetX, -10], [1 + offsetX, 10]], { dash: 3, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	mainBoard2.create('line', [[-1 + offsetX, -10], [-1 + offsetX, 10]], { dash: 3, strokeWidth: 1, strokeColor: colorForAsymptotes });
+
+	var lineNameOffset = "$$y=2$$"; //change dot
+	var symmetryY2 = mainBoard2.create('functiongraph', [function(x) { return offsetY; }], { dash: 1, strokeWidth: 1, strokeColor: color6 });
+	var symmetryY2text = mainBoard2.create('text', [positionTextXOffset - 0.75, offsetY + 0.6, lineNameOffset], { fontSize: 16, color: color6 });
+	symmetryY2.setAttribute({ visible: false });
+	symmetryY2text.setAttribute({ visible: false });
+
+	var pointNameOffset = "$$(2,2)$$"; //change dot
+	var symmetryPoint = mainBoard2.create('point', [offsetX, offsetY], { name: pointNameOffset,
+		label: {
+			offset: [0, 25],
+			anchorX: 'middle',
+			anchorY: 'top'
+		},
+		size: 3, color: colorForPoints });
+	symmetryPoint.setAttribute({ visible: false });
+
+	var x21 = [], y21 = [];
+	var x22 = [], y22 = [];
+	var x23 = [], y23 = [];
+	var x24 = [], y24 = [];
+	var x25 = [], y25 = [];
+
+	x1.forEach((element, index) => {
+		x21[index] = element + offsetX;
+	});
+	y1.forEach((element, index) => {
+		y21[index] = element + offsetY;
+	});
+	x2.forEach((element, index) => {
+		x22[index] = element + offsetX;
+	});
+	y2.forEach((element, index) => {
+		y22[index] = element + offsetY;
+	});
+	x3.forEach((element, index) => {
+		x23[index] = element + offsetX;
+	});
+	y3.forEach((element, index) => {
+		y23[index] = element + offsetY;
+	});
+	x4.forEach((element, index) => {
+		x24[index] = element + offsetX;
+	});
+	y4.forEach((element, index) => {
+		y24[index] = element + offsetY;
+	});
+	x5.forEach((element, index) => {
+		x25[index] = element + offsetX;
+	});
+	y5.forEach((element, index) => {
+		y25[index] = element + offsetY;
+	});
+
+	mainGraph21.updateDataArray = function()
+	{
+		var i_end = 50;
+		var value = slider2.value;
+		var dataX = [], dataY = [];
+		if (value <= i_end)
+		{
+			for (var i = 0; i < value; i++)
+			{
+				dataX.push(x21[i]);
+				dataY.push(y21[i]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+			specialPoint21.setAttribute({ visible: false });
+			symmetryY2.setAttribute({ visible: false });
+			symmetryY2text.setAttribute({ visible: false });
+		}
+		else
+		{
+			this.dataX = x21;
+			this.dataY = y21;
+			specialPoint21.setAttribute({ visible: true });
+		}
+	}
+	mainGraph22.updateDataArray = function()
+	{ 
+		var i_start = 51;
+		var i_end = i_start + 49;
+		var value = slider2.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x22[i - i_start]);
+				dataY.push(y22[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+			symmetryY2.setAttribute({ visible: false });
+			symmetryY2text.setAttribute({ visible: false });
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x22;
+			this.dataY = y22;
+			symmetryY2.setAttribute({ visible: true });
+			symmetryY2text.setAttribute({ visible: true });
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+	mainGraph23.updateDataArray = function()
+	{ 
+		var i_start = 100;
+		var i_end = i_start + 99;
+		var value = slider2.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x23[i - i_start]);
+				dataY.push(y23[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x23;
+			this.dataY = y23;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+	mainGraph24.updateDataArray = function()
+	{ 
+		var i_start = 200;
+		var i_end = i_start + 99;
+		var value = slider2.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x24[i - i_start]);
+				dataY.push(y24[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+			symmetryPoint.setAttribute({ visible: true });
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x24;
+			this.dataY = y24;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+			symmetryPoint.setAttribute({ visible: false });
+		}
+	}
+	mainGraph25.updateDataArray = function()
+	{ 
+		var i_start = 300;
+		var i_end = i_start + 99;
+		var value = slider2.value;
+		var dataX = [], dataY = [];
+		if (i_start < value && value <= i_end)
+		{
+			for (var i = i_start; i < value; i++)
+			{
+				dataX.push(x25[i - i_start]);
+				dataY.push(y25[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+		}
+		else if (value > i_end)
+		{
+			this.dataX = x25;
+			this.dataY = y25;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+
+	function draw2()
+	{
+		mainBoard2.suspendUpdate();
+
+		mainGraph21.updateDataArray();
+		mainGraph22.updateDataArray();
+		mainGraph23.updateDataArray();
+		mainGraph24.updateDataArray();
+		mainGraph25.updateDataArray();
+
+		mainBoard2.unsuspendUpdate();
+	}
+
+	var ceilSymmetry3 = document.getElementById('ceilSymmetry3');
+	var ceilSymmetry4 = document.getElementById('ceilSymmetry4');
+	
+	var symmetryBoard2 = JXG.JSXGraph.initBoard('bigParametricPlotSymmetry2', {
+		defaultAxes: { y: { ticks: { visible: false } }, x: { ticks: { visible: false } } },
+		boundingbox: borders2, registerEvents: false, showNavigation: false, showCopyright: false, axis: true, grid: true });
+	symmetryBoard2.create('text', [positionTextXOffset, -0.6, '$$x$$'], { fontSize: 22, color: colorForText });
+	symmetryBoard2.create('text', [0.1, positionTextYOffset, '$$y$$'], { fontSize: 22, color: colorForText });
+	var symmetryGraph21 = symmetryBoard2.create('curve', [
+		function(t) { return 1/Math.sin(t) + offsetX },
+		function(t) { return 1/Math.sin(2 * t) + offsetY },
+		-PI, -3 * PI / 4
+	], { strokeColor: color1, strokeWidth: 3 });
+	var symmetryGraph22 = symmetryBoard2.create('curve', [
+		function(t) { return 1/Math.sin(t) + offsetX },
+		function(t) { return 1/Math.sin(2 * t) + offsetY },
+		-3 * PI / 4, -PI / 2
+	], { strokeColor: color2, strokeWidth: 3 });
+	var symmetryGraph23 = symmetryBoard2.create('curve', [
+		function(t) { return 1/Math.sin(t) + offsetX },
+		function(t) { return 1/Math.sin(2 * t) + offsetY },
+		-PI / 2, 0
+	], { dash: 3, strokeColor: color3, strokeWidth: 3 });
+	var symmetryGraph24 = symmetryBoard2.create('curve', [
+		function(t) { return 1/Math.sin(t) + offsetX },
+		function(t) { return 1/Math.sin(2 * t) + offsetY },
+		0, PI / 2
+	], { dash: 3, strokeColor: color4, strokeWidth: 3 });
+	var symmetryGraph25 = symmetryBoard2.create('curve', [
+		function(t) { return 1/Math.sin(t) + offsetX },
+		function(t) { return 1/Math.sin(2 * t) + offsetY },
+		PI / 2, PI
+	], { dash: 3, strokeColor: color5, strokeWidth: 3 });
+	symmetryGraph23.setAttribute({ visible: false });
+	symmetryGraph24.setAttribute({ visible: false });
+	symmetryGraph25.setAttribute({ visible: false });
+
+	symmetryBoard2.create('point', [-2 / Math.sqrt(2) + offsetX, 1 + offsetY], { name: '', size: 3, color: colorForPoints });
+
+	//dash to var
+	symmetryBoard2.create('functiongraph', [function(x) { return 0.5 * (x - offsetX) + offsetY; }], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	symmetryBoard2.create('functiongraph', [function(x) { return -0.5 * (x - offsetX) + offsetY; }], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	symmetryBoard2.create('line', [[1 + offsetX, -10], [1 + offsetX, 10]], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+	symmetryBoard2.create('line', [[-1 + offsetX, -10], [-1 + offsetX, 10]], { dash: 4, strokeWidth: 1, strokeColor: colorForAsymptotes });
+
+	var symmetryY2_2 = symmetryBoard2.create('functiongraph', [function(x) { return offsetY; }], { dash: 1, strokeWidth: 1, strokeColor: color6 });
+	var symmetryY2text_2 = symmetryBoard2.create('text', [positionTextXOffset - 0.75, offsetY + 0.6, lineNameOffset], { fontSize: 16, color: color6 });
+	symmetryY2_2.setAttribute({ visible: false });
+	symmetryY2text_2.setAttribute({ visible: false });
+
+	var symmetryPoint_2 = symmetryBoard2.create('point', [offsetX, offsetY], { name: pointNameOffset,
+		label: {
+			offset: [0, 25],
+			anchorX: 'middle',
+			anchorY: 'top'
+		},
+		size: 3, color: colorForPoints });
+	symmetryPoint_2.setAttribute({ visible: false });
+
+	function showSymmetry3() {
+		if (ceilSymmetry3.classList.contains('is-checked2')) {
+			symmetryGraph23.setAttribute({ visible: false });
+			ceilSymmetry4.classList.add('hidden');
+			ceilSymmetry4.classList.remove('is-checked2');
+			symmetryGraph24.setAttribute({ visible: false });
+			symmetryGraph25.setAttribute({ visible: false });
+
+			symmetryY2_2.setAttribute({ visible: false });
+			symmetryY2text_2.setAttribute({ visible: false });
+			symmetryPoint_2.setAttribute({ visible: false });
+		} else {
+			symmetryGraph23.setAttribute({ visible: true });
+			ceilSymmetry4.classList.remove('hidden');
+
+			symmetryY2_2.setAttribute({ visible: true });
+			symmetryY2text_2.setAttribute({ visible: true });
+		}
+		symmetryBoard2.fullUpdate();
+	}
+	function showSymmetry4() {
+		if (ceilSymmetry4.classList.contains('is-checked2')) {
+			symmetryGraph24.setAttribute({ visible: false });
+			symmetryGraph25.setAttribute({ visible: false });
+
+			symmetryPoint_2.setAttribute({ visible: false });
+		} else {
+			symmetryGraph24.setAttribute({ visible: true });
+			symmetryGraph25.setAttribute({ visible: true });
+
+			symmetryPoint_2.setAttribute({ visible: true });
+		}
+		symmetryBoard2.fullUpdate();
+	}
+
+	$(window).resize(function() {
+		mainBoard.resizeContainer($('#bigParametricPlot').width(), $('#bigParametricPlot').height(), true, true);
+		mainBoard.setBoundingBox(borders, false);
+
+		mainBoard2.resizeContainer($('#bigParametricPlot2').width(), $('#bigParametricPlot2').height(), true, true);
+		mainBoard2.setBoundingBox(borders2, false);
+
+		symmetryBoard.resizeContainer($('#bigParametricPlotSymmetry').width(), $('#bigParametricPlotSymmetry').height(), true, true);
+		symmetryBoard.setBoundingBox(borders, false);
+
+		symmetryBoard2.resizeContainer($('#bigParametricPlotSymmetry2').width(), $('#bigParametricPlotSymmetry').height(), true, true);
+		symmetryBoard2.setBoundingBox(borders2, false);
+	});
+}
+
+//---------------------------parametric-example-3---------------------------//
+
+else if (document.title == "Пример 3")
+{
+	var PI = Math.PI;
+	var borderValue = 8;
+	var borders = [-borderValue, borderValue, borderValue, -borderValue];
+	var smallBoundingBox = [];
+
+	var colors = [
+		'#000dff',
+		'#ff0000',
+		'#9900ff',
+		'#00ff00',
+		'#ffa600',
+		'#00f7ff',
+		'#ff00c8'
+	]
+
+	var colorForText = '#000';
+	var colorForPoints = '#000';
+	var colorForAsymptotes = '#000';
+	var colorForLines = '#000';
+
+	var slider = document.getElementById('tSliderExample3MainBoard');
+	var textAsymptote1 = document.getElementById('textAsymptote1');
+	var textAsymptote2 = document.getElementById('textAsymptote2');
+	var textAsymptote3 = document.getElementById('textAsymptote3');
+	var textAsymptote4 = document.getElementById('textAsymptote4');
+
+	var positionTextX = borderValue - 0.35;
+	var positionTextY = borderValue - 0.35;
+
+	var bigBoard = JXG.JSXGraph.initBoard('bigParametricPlot', {
+		defaultAxes: { y: { ticks: { visible: false } }, x: { ticks: { visible: false } } },
+		boundingbox: borders,
+		registerEvents: false,
+		showNavigation: false,
+		showCopyright: false,
+		axis: true,
+		grid: true
+	});
+	bigBoard.create('text', [positionTextX, -0.5, '$$x$$'], { fontSize: 22, color: colorForText });
+	bigBoard.create('text', [0.075, positionTextY, '$$y$$'], { fontSize: 22, color: colorForText });
+
+	var bigBoardGraphs = [];
+	colors.forEach(color => {
+		var graph = bigBoard.create('curve', [[0], [0]], { strokeColor: color, strokeWidth: 3 });
+		bigBoardGraphs.push(graph);
+	});
+
+	var smallBoard = JXG.JSXGraph.initBoard('smallParametricPlot', {
+		defaultAxes: { y: { ticks: { visible: false } }, x: { ticks: { visible: false } } },
+		registerEvents: false,
+		showNavigation: false,
+		showCopyright: false,
+		axis: true,
+		grid: true
+	});
+
+	var subGraphs = [];
+	colors.forEach(color => {
+		var graph = smallBoard.create('curve', [[0], [0]], { strokeColor: color, strokeWidth: 3 });
+		subGraphs.push(graph);
+	});
+
+	var x1 = [], y1 = [];
+	var x2 = [], y2 = [];
+	var x3 = [], y3 = [];
+	var x4 = [], y4 = [];
+	var x5 = [], y5 = [];
+	var x6 = [], y6 = [];
+	var x7 = [], y7 = [];
+
+	var widthForAsymptotes = 2.5;
+	var opacityForAsymptotes = 0.2;
+	var opacityForAsymptotesVisible = 1;
+	const asymptoteBase = {
+		dash: 3,
+		strokeWidth: widthForAsymptotes,
+		strokeColor: colorForAsymptotes,
+		strokeOpacity: opacityForAsymptotes
+	};
+
+	var edgeX = 80;
+	var asymptotesBigBoard = [];
+	var asymptotesSmallBoard = [];
+	const verticalSegments = [
+		[ 0.5, -edgeX, -4 ], //firstSegment [0]
+		[ 0.5, -4, 4 ],
+		[ 0.5, 4, edgeX ], //[2]
+	];
+	verticalSegments.forEach(([x, y1, y2]) => {
+		var bigBoardAsymptote = bigBoard.create('segment', [[x, y1], [x, y2]], {
+			...asymptoteBase
+		});
+		asymptotesBigBoard.push(bigBoardAsymptote);
+		var smallBoardAsymptote = smallBoard.create('segment', [[x, y1], [x, y2]], {
+			...asymptoteBase
+		});
+		asymptotesSmallBoard.push(smallBoardAsymptote);
+	});
+	const funcSegments = [
+		{ f: x => x + 1, start: -edgeX, end: -5 }, //[3]
+		{ f: x => x + 1, start: -5, end: 3 },
+		{ f: x => x + 1, start: 3, end: edgeX }, //[5]
+		{ f: x => x / 2 - 1 / 4, start: -edgeX, end: -5 }, //[6]
+		{ f: x => x / 2 - 1 / 4, start: -5, end: 3 },
+		{ f: x => x / 2 - 1 / 4, start: 3, end: edgeX }, //[8]
+	];
+	funcSegments.forEach(({ f, start, end }) => {
+		var bigBoardAsymptote = bigBoard.create('functiongraph', [f, start, end], {
+			...asymptoteBase
+		});
+		asymptotesBigBoard.push(bigBoardAsymptote);
+		var smallBoardAsymptote = smallBoard.create('functiongraph', [f, start, end], {
+			...asymptoteBase
+		});
+		asymptotesSmallBoard.push(smallBoardAsymptote);
+	});
+
+	var firstSegment = 5;
+	var secondSegment = 2;
+	var thirdSegment = 0;
+	var fourthSegment = 8;
+	var fifthSegment = 6;
+	var sixthSegment = 3;
+
+	asymptotesBigBoard[firstSegment].setAttribute({
+		opacity: opacityForAsymptotesVisible
+	});
+	asymptotesSmallBoard[firstSegment].setAttribute({
+		opacity: opacityForAsymptotesVisible
+	});
+
+	function funcX(t) {
+		return (t * t) / (1 - t);
+	}
+	function funcY(t) {
+		return (t * t * t) / (1 - t * t);
+	}
+
+	var sqrt3 = Math.sqrt(3);
+	var n1 = 150;
+	var n2 = 100;
+	var n3 = 100;
+	var n4 = 100;
+	var n4_denominator = n4 + 5;
+	var n5 = 95;
+	var n5_end = 100;
+	var n6 = 25;
+	var n7 = 125;
+	for (var i = 0; i < n1; i++)
+	{
+		var t = -borderValue + i * (-sqrt3 + borderValue) / n1;
+		x1.push(funcX(t));
+		y1.push(funcY(t));
+	}
+	for (var i = 0; i < n2; i++)
+	{
+		t = -sqrt3 + i * (-1 + sqrt3) / n2;
+		x2.push(funcX(t));
+		y2.push(funcY(t));
+	}
+	for (var i = 1; i <= n3; i++)
+	{
+		t = -1 + i / n3;
+		x3.push(funcX(t));
+		y3.push(funcY(t));
+	}
+	for (var i = 0; i < n4; i++)
+	{
+		t = i / n4_denominator;
+		x4.push(funcX(t));
+		y4.push(funcY(t));
+	}
+	for (var i = 5; i < n5_end; i++)
+	{
+		t = 1 + i * (sqrt3 - 1) / n5_end;
+		x5.push(funcX(t));
+		y5.push(funcY(t));
+	}
+	for (var i = 0; i < n6; i++)
+	{
+		t = sqrt3 + i * (2 - sqrt3) / (n6 - 1);
+		x6.push(funcX(t));
+		y6.push(funcY(t));
+	}
+	for (var i = 0; i < n7; i++)
+	{
+		t = 2 + i * (borderValue - 2) / n7;
+		x7.push(funcX(t));
+		y7.push(funcY(t));
+	}
+	x1[n1 - 1] = x2[0];
+	y1[n1 - 1] = y2[0];
+	x5[n1 - 1] = x6[0];
+	y5[n1 - 1] = y6[0];
+
+	var topLine = bigBoard.create('line', [[-0.35, 1.35], [0.35, 1.35]], { straightFirst: false, straightLast: false, strokeColor: colorForLines, strokeWidth: 0.7 });
+	var bottomLine = bigBoard.create('line', [[-0.35, 0.65], [0.35, 0.65]], { straightFirst: false, straightLast: false, strokeColor: colorForLines, strokeWidth: 0.7 });
+	var leftLine = bigBoard.create('line', [[-0.35, 0.65], [-0.35, 1.35]], { straightFirst: false, straightLast: false, strokeColor: colorForLines, strokeWidth: 0.7 });
+	var rightLine = bigBoard.create('line', [[0.35, 0.65], [0.35, 1.35]], { straightFirst: false, straightLast: false, strokeColor: colorForLines, strokeWidth: 0.7 });
+	topLine.setAttribute({ visible: false });
+	bottomLine.setAttribute({ visible: false });
+	leftLine.setAttribute({ visible: false });
+	rightLine.setAttribute({ visible: false });
+
+	var startIdBounds = 17;
+	var stepFromPoint = 0.7;
+	smallBoard.setBoundingBox([x1[startIdBounds] - stepFromPoint,
+		y1[startIdBounds] + stepFromPoint,
+		x1[startIdBounds] + stepFromPoint,
+		y1[startIdBounds] - stepFromPoint]
+	);
+	smallBoundingBox = [x1[startIdBounds] - stepFromPoint,
+		y1[startIdBounds] + stepFromPoint,
+		x1[startIdBounds] + stepFromPoint,
+		y1[startIdBounds] - stepFromPoint
+	];
+
+	topLine.point1.moveTo([smallBoundingBox[0], smallBoundingBox[1]]);
+	topLine.point2.moveTo([smallBoundingBox[2], smallBoundingBox[1]]);
+
+	bottomLine.point1.moveTo([smallBoundingBox[0], smallBoundingBox[3]]);
+	bottomLine.point2.moveTo([smallBoundingBox[2], smallBoundingBox[3]]);
+
+	leftLine.point1.moveTo([smallBoundingBox[0], smallBoundingBox[3]]);
+	leftLine.point2.moveTo([smallBoundingBox[0], smallBoundingBox[1]]);
+
+	rightLine.point1.moveTo([smallBoundingBox[2], smallBoundingBox[3]]);
+	rightLine.point2.moveTo([smallBoundingBox[2], smallBoundingBox[1]]);
+
+	//SB - smallBoard
+	const mapSpecialPointsSB = new Map();
+	//BB - bigBoard
+	const mapSpecialPointsBB = new Map();
+	const specialPoints = [
+		[ "firstSP", 1.098, 2.598 ],
+		[ "secondSP", 0, 0 ],
+		[ "thirdSP", -4.098, -2.598 ],
+		[ "fourthSP", -4, -2.667 ]
+	];
+	specialPoints.forEach(([id, x, y]) => {
+		var point = smallBoard.create('point', [x, y], { name: `$$(${x},${y})$$`,
+			label: {
+				offset: [0, 25],
+				anchorX: 'middle',
+				anchorY: 'top'
+			},
+			size: 3, color: colorForPoints, visible: false
+		});
+		mapSpecialPointsSB.set(id, point);
+		point = bigBoard.create('point', [x, y], { name: "",
+			size: 3, color: colorForPoints, visible: false
+		});
+		mapSpecialPointsBB.set(id, point);
+	});
+	mapSpecialPointsBB.get("firstSP").setAttribute({ visible: true });
+	mapSpecialPointsSB.get("firstSP").setAttribute({ visible: true });
+	mapSpecialPointsSB.get("fourthSP").label.setAttribute({
+		offset: [25, 0],
+		anchorX: 'left',
+		anchorY: 'middle'
+	});
+
+	bigBoard.update();
+	smallBoard.update();
+
+	var i_start2 = n1;
+	var i_start3 = i_start2 + n2;
+	var i_start4 = i_start3 + n3;
+	var i_start5 = i_start4 + n4;
+	var i_start6 = i_start5 + n5;
+	var i_start7 = i_start6 + n6;
+	var i_start8 = i_start7 + n7;
+	subGraphs[0].updateDataArray = bigBoardGraphs[0].updateDataArray = function()
+	{
+		var i_end = i_start2;
+		var value = slider.value;
+
+		if (value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = 0; i <= value; i++)
+			{
+				dataX.push(x1[i]);
+				dataY.push(y1[i]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+
+			asymptotesBigBoard[firstSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[firstSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote1.classList.remove("text-weight-normal");
+			textAsymptote1.classList.add("text-weight-bolder");
+		}
+		else
+		{
+			this.dataX = x1;
+			this.dataY = y1;
+
+			asymptotesBigBoard[firstSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[firstSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote1.classList.add("text-weight-normal");
+			textAsymptote1.classList.remove("text-weight-bolder");
+		}
+	}
+
+	subGraphs[1].updateDataArray = bigBoardGraphs[1].updateDataArray = function()
+	{
+		var i_start = i_start2;
+		var i_end = i_start3;
+		var value = slider.value;
+
+		if (value >= i_start && value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = i_start; i <= value; i++)
+			{
+				dataX.push(x2[i - i_start]);
+				dataY.push(y2[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+
+			asymptotesBigBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote2.classList.remove("text-weight-normal");
+			textAsymptote2.classList.add("text-weight-bolder");
+		}
+		else if (value >= i_end)
+		{
+			this.dataX = x2;
+			this.dataY = y2;
+
+			asymptotesBigBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+
+			asymptotesBigBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[secondSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote2.classList.add("text-weight-normal");
+			textAsymptote2.classList.remove("text-weight-bolder");
+		}
+	}
+
+	subGraphs[2].updateDataArray = bigBoardGraphs[2].updateDataArray = function()
+	{
+		var i_start = i_start3;
+		var i_end = i_start4;
+		var value = slider.value;
+
+		if (value >= i_start && value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = i_start; i <= value; i++)
+			{
+				dataX.push(x3[i - i_start]);
+				dataY.push(y3[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+
+			asymptotesBigBoard[thirdSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[thirdSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote2.classList.remove("text-weight-normal");
+			textAsymptote2.classList.add("text-weight-bolder");
+		}
+		else if (value >= i_end)
+		{
+			this.dataX = x3;
+			this.dataY = y3;
+
+			asymptotesBigBoard[thirdSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[thirdSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote2.classList.add("text-weight-normal");
+			textAsymptote2.classList.remove("text-weight-bolder");
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+
+			asymptotesBigBoard[thirdSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[thirdSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+		}
+	}
+
+	subGraphs[3].updateDataArray = bigBoardGraphs[3].updateDataArray = function()
+	{
+		var i_start = i_start4;
+		var i_end = i_start5;
+		var value = slider.value;
+
+		if (value >= i_start && value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = i_start; i <= value; i++)
+			{
+				dataX.push(x4[i - i_start]);
+				dataY.push(y4[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+
+			asymptotesBigBoard[fourthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[fourthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote3.classList.remove("text-weight-normal");
+			textAsymptote3.classList.add("text-weight-bolder");
+		}
+		else if (value >= i_end)
+		{
+			this.dataX = x4;
+			this.dataY = y4;
+
+			asymptotesBigBoard[fourthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[fourthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+
+			asymptotesBigBoard[fourthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[fourthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote3.classList.add("text-weight-normal");
+			textAsymptote3.classList.remove("text-weight-bolder");
+		}
+	}
+
+	subGraphs[4].updateDataArray = bigBoardGraphs[4].updateDataArray = function()
+	{
+		var i_start = i_start5;
+		var i_end = i_start6;
+		var value = slider.value;
+
+		if (value >= i_start && value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = i_start; i <= value; i++)
+			{
+				dataX.push(x5[i - i_start]);
+				dataY.push(y5[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+
+			asymptotesBigBoard[fifthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[fifthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote3.classList.remove("text-weight-normal");
+			textAsymptote3.classList.add("text-weight-bolder");
+		}
+		else if (value >= i_end)
+		{
+			this.dataX = x5;
+			this.dataY = y5;
+
+			asymptotesBigBoard[fifthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[fifthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote3.classList.add("text-weight-normal");
+			textAsymptote3.classList.remove("text-weight-bolder");
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+
+			asymptotesBigBoard[fifthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[fifthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+		}
+	}
+
+	subGraphs[5].updateDataArray = bigBoardGraphs[5].updateDataArray = function()
+	{
+		var i_start = i_start6;
+		var i_end = i_start7;
+		var value = slider.value;
+
+		if (value >= i_start && value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = i_start; i <= value; i++)
+			{
+				dataX.push(x6[i - i_start]);
+				dataY.push(y6[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+		}
+		else if (value >= i_end)
+		{
+			this.dataX = x6;
+			this.dataY = y6;
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+		}
+	}
+
+	subGraphs[6].updateDataArray = bigBoardGraphs[6].updateDataArray = function()
+	{
+		var i_start = i_start7;
+		var i_end = i_start8;
+		var value = slider.value;
+
+		if (value >= i_start && value < i_end)
+		{
+			var dataX = [], dataY = [];
+			for (var i = i_start; i <= value; i++)
+			{
+				dataX.push(x7[i - i_start]);
+				dataY.push(y7[i - i_start]);
+			}
+			this.dataX = dataX;
+			this.dataY = dataY;
+
+			asymptotesBigBoard[sixthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[sixthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote4.classList.remove("text-weight-normal");
+			textAsymptote4.classList.add("text-weight-bolder");
+		}
+		else if (value >= i_end)
+		{
+			this.dataX = x7;
+			this.dataY = y7;
+
+			asymptotesBigBoard[sixthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			asymptotesSmallBoard[sixthSegment].setAttribute(
+				{ opacity: opacityForAsymptotesVisible }
+			);
+			textAsymptote4.classList.add("text-weight-normal");
+			textAsymptote4.classList.remove("text-weight-bolder");
+		}
+		else
+		{
+			this.dataX = [];
+			this.dataY = [];
+
+			asymptotesBigBoard[sixthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			asymptotesSmallBoard[sixthSegment].setAttribute(
+				{ opacity: opacityForAsymptotes }
+			);
+			textAsymptote4.classList.add("text-weight-normal");
+			textAsymptote4.classList.remove("text-weight-bolder");
+		}
+	}
+
+	var updateScheduled = false;
+	function scheduleDraw() {
+		if (!updateScheduled) {
+			updateScheduled = true;
+			requestAnimationFrame(() => {
+				draw();
+				updateScheduled = false;
+			});
+		}
+	}
+
+	function draw()
+	{
+		bigBoard.suspendUpdate();
+		smallBoard.suspendUpdate();
+
+		bigBoardGraphs[0].updateDataArray();
+		bigBoardGraphs[1].updateDataArray();
+		bigBoardGraphs[2].updateDataArray();
+		bigBoardGraphs[3].updateDataArray();
+		bigBoardGraphs[4].updateDataArray();
+		bigBoardGraphs[5].updateDataArray();
+		bigBoardGraphs[6].updateDataArray();
+
+		subGraphs[0].updateDataArray();
+		subGraphs[1].updateDataArray();
+		subGraphs[2].updateDataArray();
+		subGraphs[3].updateDataArray();
+		subGraphs[4].updateDataArray();
+		subGraphs[5].updateDataArray();
+		subGraphs[6].updateDataArray();
+
+		var value = slider.value;
+		console.log(value);
+		var n_end1 = i_start2;
+		var n_end2 = i_start3;
+		var n_end3 = i_start4;
+		var n_end4 = i_start5;
+		var n_end5 = i_start6;
+		var n_end6 = i_start7;
+		var n_end7 = i_start8;
+		if (value < n_end1)
+		{
+			if (value <= startIdBounds)
+			{
+				smallBoard.setBoundingBox([x1[startIdBounds] - stepFromPoint,
+					y1[startIdBounds] + stepFromPoint,
+					x1[startIdBounds] + stepFromPoint,
+					y1[startIdBounds] - stepFromPoint]
+				);
+				smallBoundingBox = [x1[startIdBounds] - stepFromPoint,
+					y1[startIdBounds] + stepFromPoint,
+					x1[startIdBounds] + stepFromPoint,
+					y1[startIdBounds] - stepFromPoint
+				];
+			}
+			else
+			{
+				topLine.setAttribute({ visible: true });
+				bottomLine.setAttribute({ visible: true });
+				leftLine.setAttribute({ visible: true });
+				rightLine.setAttribute({ visible: true });
+
+				smallBoard.setBoundingBox([x1[value] - stepFromPoint, y1[value] + stepFromPoint, x1[value] + stepFromPoint, y1[value] - stepFromPoint]);
+				smallBoundingBox = [x1[value] - stepFromPoint, y1[value] + stepFromPoint, x1[value] + stepFromPoint, y1[value] - stepFromPoint];
+			}
+
+			mapSpecialPointsSB.get("secondSP").setAttribute({ visible: false });
+			mapSpecialPointsBB.get("secondSP").setAttribute({ visible: false });
+			mapSpecialPointsSB.get("thirdSP").setAttribute({ visible: false });
+			mapSpecialPointsBB.get("thirdSP").setAttribute({ visible: false });
+			mapSpecialPointsSB.get("fourthSP").setAttribute({ visible: false });
+			mapSpecialPointsBB.get("fourthSP").setAttribute({ visible: false });
+		}
+		if (value >= n_end1 && value < n_end2 - 1)
+		{
+			topLine.setAttribute({ visible: true });
+			bottomLine.setAttribute({ visible: true });
+			leftLine.setAttribute({ visible: true });
+			rightLine.setAttribute({ visible: true });
+
+			smallBoard.setBoundingBox([x2[value - n_end1] - stepFromPoint,
+				y2[value - n_end1] + stepFromPoint,
+				x2[value - n_end1] + stepFromPoint,
+				y2[value - n_end1] - stepFromPoint
+			]);
+			smallBoundingBox = [x2[value - n_end1] - stepFromPoint,
+				y2[value - n_end1] + stepFromPoint,
+				x2[value - n_end1] + stepFromPoint,
+				y2[value - n_end1] - stepFromPoint
+			];
+		}
+		if (value >= n_end2 && value < n_end3)
+		{
+			console.log(x3[value - n_end2]);
+			console.log(y3[value - n_end2]);
+
+			topLine.setAttribute({ visible: true });
+			bottomLine.setAttribute({ visible: true });
+			leftLine.setAttribute({ visible: true });
+			rightLine.setAttribute({ visible: true });
+
+			mapSpecialPointsSB.get("secondSP").setAttribute({ visible: true });
+			mapSpecialPointsBB.get("secondSP").setAttribute({ visible: true });
+			mapSpecialPointsSB.get("thirdSP").setAttribute({ visible: false });
+			mapSpecialPointsBB.get("thirdSP").setAttribute({ visible: false });
+			mapSpecialPointsSB.get("fourthSP").setAttribute({ visible: false });
+			mapSpecialPointsBB.get("fourthSP").setAttribute({ visible: false });
+
+			smallBoard.setBoundingBox([x3[value - n_end2] - stepFromPoint,
+				y3[value - n_end2] + stepFromPoint,
+				x3[value - n_end2] + stepFromPoint,
+				y3[value - n_end2] - stepFromPoint
+			]);
+			smallBoundingBox = [x3[value - n_end2] - stepFromPoint,
+				y3[value - n_end2] + stepFromPoint,
+				x3[value - n_end2] + stepFromPoint,
+				y3[value - n_end2] - stepFromPoint
+			];
+		}
+		if (value >= n_end3 && value < n_end4 - 1)
+		{
+			topLine.setAttribute({ visible: true });
+			bottomLine.setAttribute({ visible: true });
+			leftLine.setAttribute({ visible: true });
+			rightLine.setAttribute({ visible: true });
+
+			smallBoard.setBoundingBox([x4[value - n_end3] - stepFromPoint,
+				y4[value - n_end3] + stepFromPoint,
+				x4[value - n_end3] + stepFromPoint,
+				y4[value - n_end3] - stepFromPoint
+			]);
+			smallBoundingBox = [x4[value - n_end3] - stepFromPoint,
+				y4[value - n_end3] + stepFromPoint,
+				x4[value - n_end3] + stepFromPoint,
+				y4[value - n_end3] - stepFromPoint
+			];
+		}
+		if (value >= n_end4 && value < n_end5)
+		{
+			topLine.setAttribute({ visible: true });
+			bottomLine.setAttribute({ visible: true });
+			leftLine.setAttribute({ visible: true });
+			rightLine.setAttribute({ visible: true });
+
+			mapSpecialPointsSB.get("thirdSP").setAttribute({ visible: true });
+			mapSpecialPointsBB.get("thirdSP").setAttribute({ visible: true });
+			mapSpecialPointsSB.get("fourthSP").setAttribute({ visible: false });
+			mapSpecialPointsBB.get("fourthSP").setAttribute({ visible: false });
+
+			smallBoard.setBoundingBox([x5[value - n_end4] - stepFromPoint,
+				y5[value - n_end4] + stepFromPoint,
+				x5[value - n_end4] + stepFromPoint,
+				y5[value - n_end4] - stepFromPoint
+			]);
+			smallBoundingBox = [x5[value - n_end4] - stepFromPoint,
+				y5[value - n_end4] + stepFromPoint,
+				x5[value - n_end4] + stepFromPoint,
+				y5[value - n_end4] - stepFromPoint
+			];
+		}
+		if (value >= n_end5 && value < n_end6)
+		{
+			topLine.setAttribute({ visible: true });
+			bottomLine.setAttribute({ visible: true });
+			leftLine.setAttribute({ visible: true });
+			rightLine.setAttribute({ visible: true });
+
+			mapSpecialPointsSB.get("fourthSP").setAttribute({ visible: true });
+			mapSpecialPointsBB.get("fourthSP").setAttribute({ visible: true });
+
+			smallBoard.setBoundingBox([x6[value - n_end5] - stepFromPoint,
+				y6[value - n_end5] + stepFromPoint,
+				x6[value - n_end5] + stepFromPoint,
+				y6[value - n_end5] - stepFromPoint
+			]);
+			smallBoundingBox = [x6[value - n_end5] - stepFromPoint,
+				y6[value - n_end5] + stepFromPoint,
+				x6[value - n_end5] + stepFromPoint,
+				y6[value - n_end5] - stepFromPoint
+			];
+		}
+		if (value >= n_end6 && value < n_end7 - 15)
+		{
+			topLine.setAttribute({ visible: true });
+			bottomLine.setAttribute({ visible: true });
+			leftLine.setAttribute({ visible: true });
+			rightLine.setAttribute({ visible: true });
+
+			smallBoard.setBoundingBox([x7[value - n_end6] - stepFromPoint,
+				y7[value - n_end6] + stepFromPoint,
+				x7[value - n_end6] + stepFromPoint,
+				y7[value - n_end6] - stepFromPoint
+			]);
+			smallBoundingBox = [x7[value - n_end6] - stepFromPoint,
+				y7[value - n_end6] + stepFromPoint,
+				x7[value - n_end6] + stepFromPoint,
+				y7[value - n_end6] - stepFromPoint
+			];
+		}
+
+		topLine.point1.moveTo([smallBoundingBox[0], smallBoundingBox[1]]);
+		topLine.point2.moveTo([smallBoundingBox[2], smallBoundingBox[1]]);
+
+		bottomLine.point1.moveTo([smallBoundingBox[0], smallBoundingBox[3]]);
+		bottomLine.point2.moveTo([smallBoundingBox[2], smallBoundingBox[3]]);
+
+		leftLine.point1.moveTo([smallBoundingBox[0], smallBoundingBox[3]]);
+		leftLine.point2.moveTo([smallBoundingBox[0], smallBoundingBox[1]]);
+
+		rightLine.point1.moveTo([smallBoundingBox[2], smallBoundingBox[3]]);
+	  	rightLine.point2.moveTo([smallBoundingBox[2], smallBoundingBox[1]]);
+
+		bigBoard.unsuspendUpdate();
+		smallBoard.unsuspendUpdate();
+	}
+
+	$(window).resize(function() {
+		bigBoard.resizeContainer($('#bigParametricPlot').width(), $('#bigParametricPlot').height(), true, true);
+		bigBoard.setBoundingBox(borders, false);
+
+		smallBoard.resizeContainer($('#smallParametricPlot').width(), $('#smallParametricPlot').height(), true, true);
+		smallBoard.setBoundingBox(smallBoundingBox, false);
+	});
+}
+
 //---------------------------transform---------------------------//
 
 else if (document.title == "Основные преобразования функций")
@@ -2105,7 +3700,7 @@ else if (document.title == "Связь полярных и декартовых 
 
     setXText((1 + Math.cos(phi)) * Math.cos(phi));
     setYText((1 + Math.cos(phi)) * Math.sin(phi));
-    setFText(phi);
+    setFText(phi * 180 / (2 * Math.PI));
     setRText(1 + Math.cos(phi));
 
     if (isRunning) {
@@ -2242,7 +3837,7 @@ else if (document.title == "Связь полярных и декартовых 
 
     setXText((1 + Math.sin(phi)) * Math.cos(phi));
     setYText((1 + Math.sin(phi)) * Math.sin(phi));
-    setFText(phi);
+    setFText(phi * 180 / (2 * Math.PI));
     setRText(1 + Math.sin(phi));
 
     if (isRunning) {
@@ -2394,7 +3989,7 @@ else if (document.title == "Связь полярных и декартовых 
 
     setXText((2 * Math.cos(2 * phi)) * Math.cos(phi));
     setYText((2 * Math.cos(2 * phi)) * Math.sin(phi));
-    setFText(phi);
+    setFText(phi * 180 / (2 * Math.PI));
     setRText(2 * Math.cos(2 * phi));
 
     if (phi > -7 * Math.PI / 4 && phi < -5 * Math.PI / 4 || 
@@ -2552,7 +4147,7 @@ else if (document.title == "Связь полярных и декартовых 
 
     setXText((2 * Math.sin(2 * phi)) * Math.cos(phi));
     setYText((2 * Math.sin(2 * phi)) * Math.sin(phi));
-    setFText(phi);
+    setFText(phi * 180 / (2 * Math.PI));
     setRText(2 * Math.sin(2 * phi));
 
     if (phi > -3 * Math.PI / 2 && phi < -Math.PI || 

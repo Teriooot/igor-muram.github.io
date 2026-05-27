@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<!-- <base href="/"> -->
+
+	<title>Пример 2</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#003949">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico">
+
+	<meta name="msapplication-TileColor" content="#ffc40d">
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Custom Browsers Color Start -->
+	<meta name="theme-color" content="#000">
+	<!-- Custom Browsers Color End -->
+
+	<link rel="stylesheet" href="css/main.min.css">
+
+</head>
+
+<body>
+
+	<div class="preloader">
+		<div class="pulse"></div>
+	</div>
+
+	<div id="my-page">
+		<div id="my-header">
+			<header class="site-header">
+
+				<div class="top-line">
+					<a href="#my-menu" class="hamburger hamburger--collapse-r">
+						<span class="hamburger-box"><span class="hamburger-inner"></span></span>
+					</a>
+
+					<nav id="my-menu">
+						<ul>
+							<li><a href="index.html">Главная</a></li>
+							<li><a href="developers.html">Разработчики</a></li>
+							<li><a href="methods.html">Способы задания функций и кривых</a></li>
+							<li><a href="transform.html">Основные преобразования функций</a></li>
+							<li><span>Элементарные функции</span>
+								<ul>
+									<li><a href="straight.html">Прямая</a></li>
+									<li><a href="parabola.html">Парабола</a></li>
+									<li><a href="hyperbole.html">Гипербола</a></li>
+									<li><a href="power.html">Степенная функция</a></li>
+									<li><a href="exponential.html">Показательная и логарифмическая функции</a></li>
+									<li><span>Тригонометрические функции</span>
+										<ul>
+											<li><a href="trigonometric-1.html">$$sin(x),\;\;cos(x),\;\;arcsin(x),\;\;arccos(x)$$</a></li>
+											<li><a href="trigonometric-2.html">$$tg(x),\;\;ctg(x),\;\;arctg(x),\;\;arcctg(x)$$</a></li>
+										</ul>
+									</li>
+									<li><a href="hyperbolic.html">Гиперболические функции</a></li>
+								</ul>
+							</li>
+							<li><a href="other-functions.html">Некоторые другие функции</a></li>
+							<li><span>Исследование функций и кривых</span>
+								<ul>
+									<li><a href="valid-range.html">ОДЗ и промежутки непрерывности</a></li>
+									<li><a href="periodicity.html">Периодичность</a></li>
+									<li><span>Симметрия</span>
+										<ul>
+											<li><a href="explicit-symmetry.html">Явное задание</a></li>
+											<li><a href="implicit-symmetry.html">Неявное задание</a></li>
+											<li><a href="parametric-symmetry.html">Параметрическое задание</a></li>
+										</ul>
+									</li>
+									<li><a href="monotonicity.html">Монотонность функции</a></li>
+									<li><a href="convex.html">Выпуклость функции</a></li>
+									<li><a href="asymptotes.html">Асимптоты</a></li>
+									<li><a href="special-points.html">Особые точки</a></li>
+									<li><span>Построение графиков функций и кривых</span>
+										<ul>
+											<li><span>Явное задание</span>
+												<ul>
+													<li><a href="explicit-scheme.html">Схема построения</a></li>
+													<li><span>Примеры</span>
+														<ul>
+															<li><a href="explicit-example-1.html">Пример 1</a></li>
+															<li><a href="explicit-example-2.html">Пример 2</a></li>
+															<li><a href="explicit-example-3.html">Пример 3</a></li>
+															<li><a href="explicit-example-4.html">Пример 4</a></li>
+															<li><a href="explicit-example-5.html">Пример 5</a></li>
+															<li><a href="explicit-example-6.html">Пример 6</a></li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+											<li><span>Параметрическое задание</span>
+												<ul>
+													<li><a href="parametric-scheme.html">Схема построения</a></li>
+													<li><a href="parametric-example.html">Пример</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><span>Связь полярных и декартовых координат</span>
+								<ul>
+									<li><a href="polar-1.html">$$r=1+cos(\varphi)$$</a></li>
+									<li><a href="polar-2.html">$$r=1+sin(\varphi)$$</a></li>
+									<li><a href="polar-3.html">$$r=2cos(2\varphi)$$</a></li>
+									<li><a href="polar-4.html">$$r=2sin(2\varphi)$$</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-10 text-center">
+						<h1>Пример 2</h1>
+						<p class="parametric-example-condition2">$$x(t)=\frac{1}{\sin(t)},\;\;y(t)=\frac{1}{\sin(2t)}.$$</p>
+					</div>
+				</div>
+
+				<div class="parametric-example-container">
+					<div class="row justify-content-start">
+						<div class="text-justify">
+							<div class="algorithm-text"><i style="margin-left: 31px;"></i><b>1.</b>&ensp;Так как функции $$x(t)$$ и $$y(t)$$ периодические с общим периодом $$2\pi$$, 
+								кар&shy;тин&shy;ка бу&shy;дет по&shy;вто&shy;ря&shy;ться, поэтому достаточно проанализировать $$t$$ на промежутке длинной 
+								$$2\pi$$. Возьмём $$t$$ от $$-\pi$$ до $$\pi$$.</div>
+							<div class="algorithm-text"><i style="margin-left: 31px;"></i><b>2.</b>&ensp;Определим, обладает ли кривая симметрией.</div>
+							<div class="algorithm-text"><i style="margin-left: 81px;"></i><b>2.1.</b>&ensp;Поскольку $$x(t)$$ и $$y(t)$$ — нечётные функции, кривая будет 
+								симметрична относительно точки $$(0,0)$$.</div>
+							<div class="algorithm-text"><i style="margin-left: 81px;"></i><b>2.2.</b>&ensp;Докажем сим&shy;ме&shy;три&shy;ю кривой от&shy;но&shy;си&shy;тель&shy;но 
+								прямой $$y=y_{0}=0$$ для $$t_{0}=\frac{\pi}{2}$$:</div>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-lg-10 text-center">
+							<p class="algorithm-text">$$\forall t \in \left(0,\frac{\pi}{2}\right):$$</p>
+							<p class="algorithm-text">$$x(t_{0}+t)=$$
+								$$\frac{1}{\sin\left(\frac{\pi}{2}+t\right)}=$$
+								$$\frac{1}{\sin\left(\frac{\pi}{2}-t\right)}=$$
+								$$x(t_{0}-t),$$</p>
+							<p class="algorithm-text">$$y_{0}-y(t_{0}+t)=$$
+								$$0-\frac{1}{\sin(\pi+2t)}=$$
+								$$\frac{1}{\sin(\pi-2t)}=$$
+								$$-\left(0-\frac{1}{\sin(\pi-2t)}\right)=$$
+								$$-(y_{0}-y(t_{0}-t)).$$</p>
+						</div>
+					</div>
+					<div class="row justify-content-start">
+						<div class="text-justify">
+							<div class="algorithm-text"><i style="margin-left: 31px;"></i><b>3.</b>&ensp;Нарисуем часть графика функции во второй четверти, после чего получим 
+								часть в третьей четверти с помощью отражения относительно прямой $$y=0$$. А остальные части получим 
+								с помощью отражения относительно точки $$(0,0)$$.</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center">
+
+						<div class="col-xs-12 col-md-9 col-lg-8 col-xl-6 text-justify plr-modify">
+							<div class="parametric-example-column column1">
+								<div class="row justify-content-start">
+									<div class="symmetryFirst1" onclick="showSymmetry1();">
+										<p id="ceilSymmetry1" class="symmetryCheck1">Показать симметрию относительно прямой$$\;y=0$$</p>
+									</div>
+									<div class="symmetryFirst2" onclick="showSymmetry2();">
+										<p id="ceilSymmetry2" class="symmetryCheck2 hidden">Показать симметрию относительно точки$$\;(0,0)$$</p>
+									</div>
+								</div>
+								<div id="bigParametricPlotSymmetry" class="jxgbox"></div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-9 col-lg-8 col-xl-6 text-justify plr-modify">
+							<div class="parametric-example-column column2">
+								<div class="row justify-content-center">
+									<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-vl-1" id="tLabel">
+										<p><span class="red">$$t$$</span></p>
+									</div>
+									<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 col-vl-11">
+										<input type="range" id="tSlider2" class="slider" min="0" max="400" step="1" value="0" oninput="draw();">
+										<span class="slider-dot slider-dot--11 slider-dot--hollow slider-dot--tSlider2">
+											<span class="dot-label">$$-\pi$$</span>
+										</span>
+										<span class="slider-dot slider-dot--12 slider-dot--filled slider-dot--tSlider2">
+											<span class="dot-label">$$-\frac{3\pi}{4}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--13 slider-dot--hollow slider-dot--tSlider2">
+											<span class="dot-label">$$-\frac{\pi}{2}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--14 slider-dot--hollow slider-dot--tSlider2">
+											<span class="dot-label">$$0$$</span>
+										</span>
+										<span class="slider-dot slider-dot--15 slider-dot--hollow slider-dot--tSlider2">
+											<span class="dot-label">$$\frac{\pi}{2}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--16 slider-dot--hollow slider-dot--tSlider2">
+											<span class="dot-label">$$\pi$$</span>
+										</span>
+									</div>
+								</div>
+								<div id="bigParametricPlot" class="jxgbox"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="parametric-example-table-container">
+					<div class="row justify-content-center">
+
+						<div class="col-xs-12 col-md-10 col-lg-10 col-xl-10 col-vl-8 col-sl-8" style="padding: 0;">
+							<div class="row justify-content-start">
+								<div style="overflow-x:auto;">
+									<table id="parametric-example-table">
+										<tr>
+											<td style="padding-bottom: 6px; padding-top: 6px;">$$t$$</td>
+											<td data-col="2" style="padding-bottom: 6px; padding-top: 6px;">$$-\pi$$</td>
+											<td data-col="3" style="padding-bottom: 6px; padding-top: 6px;" class="blue-fill2">$$\left(-\pi,-\frac{3\pi}{4}\right)$$</td>
+											<td data-col="4" style="padding-bottom: 6px; padding-top: 6px;" colspan="2">$$-\frac{3\pi}{4}$$</td>
+											<td data-col="5" style="padding-bottom: 6px; padding-top: 6px;" class="blue-fill3">$$\left(-\frac{3\pi}{4},-\frac{\pi}{2}\right)$$</td>
+											<td data-col="6" style="padding-bottom: 6px; padding-top: 6px;" colspan="2">$$-\frac{\pi}{2}$$</td>
+										</tr>
+										<tr>
+											<td>$$x$$</td>
+											<td>$$+\infty$$</td>
+											<td class="blue-fill2"></td>
+											<td colspan="2">$$-\frac{2}{\sqrt{2}}$$</td>
+											<td class="blue-fill3"></td>
+											<td colspan="2">$$1$$</td>
+										</tr>
+										<tr>
+											<td>$$y$$</td>
+											<td>$$+\infty$$</td>
+											<td class="blue-fill2"></td>
+											<td colspan="2">$$1$$</td>
+											<td class="blue-fill3"></td>
+											<td>$$+\infty$$</td>
+											<td>$$-\infty$$</td>
+										</tr>
+										<tr>
+											<td>$$y_{x}^{'}$$</td>
+											<td class="cross"></td>
+											<td class="blue-fill2" style="font-size: 34px;">&#8600;</td>
+											<td colspan="2">$$0$$</td>
+											<td class="blue-fill3" style="font-size: 34px;">&#8599;</td>
+											<td class="cross" colspan="2"></td>
+										</tr>
+										<tr>
+											<td>$$y_{xx}^{''}$$</td>
+											<td></td>
+											<td class="blue-fill2" style="font-size: 17px; padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$</td>
+											<td colspan="2"></td>
+											<td class="blue-fill3" style="font-size: 17px; padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$</td>
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<td style="line-height: 1.2; font-size: 19px; padding-bottom: 6px; padding-top: 6px;">Особые точки
+												и уравнения асимптот</td>
+											<td id="textAsymptote1" class="text-weight-bolder">Асимптота $$y=-\frac{1}{2}x$$</td>
+											<td class="blue-fill2"></td>
+											<td colspan="2">Вершина</td>
+											<td class="blue-fill3"></td>
+											<td colspan="2" id="textAsymptote2" class="text-weight-normal">Асимптота $$x=-1$$</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-10 col-lg-10 col-xl-10 col-vl-4 col-sl-4" style="padding: 0;">
+							<div id="parametric-example-calc2" class="row justify-content-center">
+								<div class="container">
+									<div class="row">
+										<div class="col-xs-12 col-sl-12 poster">$$x(t)=\frac{1}{\sin(t)},\;\;$$ $$y(t)=\frac{1}{\sin(2t)}$$</div>
+										<div class="col-xs-12 col-sl-12 poster poster-1">$$y_{x}^{'}=\frac{\cos(2t)}{2\cos^{3}(t)}$$
+											<div class="info"><i class="fas fa-eye"></i></div>
+											<div class="descr">$$y_{x}^{'}=\frac{(\sin^{-1}(2t))_{t}^{'}}{(\sin^{-1}(t))_{t}^{'}}=$$
+												$$-\frac{2\cos(2t)}{\sin^{2}(2t)}:\left(-\frac{\cos(t)}{\sin^{2}(t)}\right)=$$
+												$$\frac{2\cos(2t)}{4\sin^{2}(t)\cos^{2}(t)}\cdot\frac{\sin^{2}(t)}{\cos(t)}=$$
+												$$\frac{\cos(2t)}{2\cos^{3}(t)}$$<br></div>
+										</div>
+										<div class="col-xs-12 col-sl-12 poster poster-2">$$y_{xx}^{''}=\frac{\sin^{3}(t)(3-2\cos^{2}(t))}{2\cos^{5}(t)}$$
+											<div class="info"><i class="fas fa-eye"></i></div>
+											<div class="descr-up">$$y_{xx}^{''}=\frac{1}{2\cos^{6}(t)}\cdot$$
+												$$(-2\sin(2t)\cos^{3}(t)+$$
+												$$\cos(2t)3\cos^{2}(t)\sin(t)):$$
+												$$\left(-\frac{\cos(t)}{\sin^{2}(t)}\right)=$$
+												$$\frac{2\sin(2t)\cos(t)-3\cos(2t)\sin(t)}{2\cos^{4}(t)}\cdot$$
+												$$\frac{\sin^{2}(t)}{\cos(t)}=$$
+												$$\frac{\sin^{3}(t)(3-2\cos^{2}(t))}{2\cos^{5}(t)}$$<br></div>
+										</div>
+										<div class="col-xs-12 col-sl-12 poster">Асимптоты:</div>
+										<div class="col-xs-12 col-sl-12 poster poster-4">1)$$\:$$ $$y=-\frac{1}{2}x\:$$ при $$\:t\rightarrow -\pi$$
+											<div class="info"><i class="fas fa-eye"></i></div>
+											<div class="descr-up">$$y=kx+b$$<br>$$k=\lim_{t\rightarrow \pi}\left(\frac{1}{\sin(2t)}:\frac{1}{\sin(t)}\right)=$$
+												$$\lim_{t\rightarrow \pi}\left(\frac{1}{2\cos(t)}\right)=-\frac{1}{2}$$
+												$$b=\lim_{t\rightarrow \pi}\left(\frac{1}{\sin(2t)}+\frac{1}{2\sin(t)}\right)=$$
+												$$[z=\pi-t,\:t=\pi-z]=$$
+												$$\lim_{z\rightarrow 0}\left(\frac{1}{\sin(2\pi-2z)}+\frac{1}{2\sin(\pi-z)}\right)=$$
+												$$\lim_{z\rightarrow 0}\left(-\frac{1}{\sin(2z)}+\frac{1}{2\sin(z)}\right)\sim$$
+												$$\lim_{z\rightarrow 0}\left(-\frac{1}{2z}+\frac{1}{2z}\right)=0$$<br>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sl-12 poster poster-6">2)$$\:$$ $$x=-1\:$$ при $$\:t\rightarrow -\frac{\pi}{2}$$
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="parametric-example-container mt-4">
+					<div class="row justify-content-start">
+						<div class="text-justify">
+							<div class="algorithm-text"><i style="margin-left: 31px;"></i><b>Замечание.</b>&ensp;Если увеличить (уменьшить) 
+								исходные $$x(t)$$ и $$y(t)$$ на кон&shy;стан&shy;ту, то симметрия сохранится, но со смещением на константу соответственно вправо (влево) и вверх (вниз). 
+								В качестве примера рассмотрим для $$t \in (-\pi,\pi)$$ следующую функцию:</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<div class="col-lg-10 text-center">
+							<p class="parametric-example-condition">$$x(t)=\frac{1}{\sin(t)}+2,\;\;y(t)=\frac{1}{\sin(2t)}+2.$$</p>
+						</div>
+					</div>
+					<!-- Нужно изменить точки -->
+					<div class="row justify-content-start">
+						<div class="text-justify">
+							<div class="algorithm-text"><i style="margin-left: 31px;"></i>Докажем сим&shy;ме&shy;три&shy;ю кривой от&shy;но&shy;си&shy;тель&shy;но 
+								точки $$(x_{0},y_{0})=(0.5,2)$$ для $$t_{0}=0$$:</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center">
+						<div class="col-lg-10 text-center">
+							<p class="algorithm-text">$$\forall t \in \left(0,\pi\right):$$</p>
+							<p class="algorithm-text">$$x_{0}-x(t_{0}+t)=$$
+								$$0.5-\left(\frac{1}{\sin(t)}+0.5\right)=$$
+								$$0.5-\left(-\frac{1}{\sin(-t)}+0.5\right)=$$
+								$$0.5+\left(\frac{1}{\sin(-t)}-0.5\right)=$$
+								$$-0.5+\left(\frac{1}{\sin(-t)}+0.5\right)=$$
+								$$-\left(0.5-\left(\frac{1}{\sin(-t)}+0.5\right)\right)=$$
+								$$-(x_{0}-x(t_{0}-t)),$$</p>
+							<p class="algorithm-text">$$y_{0}-y(t_{0}+t)=$$
+								$$2-\left(\frac{1}{\sin(2t)}+2\right)=$$
+								$$2-\left(-\frac{1}{\sin(-2t)}+2\right)=$$
+								$$2+\left(\frac{1}{\sin(-2t)}-2\right)=$$
+								$$-2+\left(\frac{1}{\sin(-2t)}+2\right)=$$
+								$$-\left(2-\left(\frac{1}{\sin(-2t)}+2\right)\right)=$$
+								$$-(y_{0}-y(t_{0}-t)).$$</p>
+						</div>
+					</div>
+
+					<div class="row justify-content-start">
+						<div class="text-justify">
+							<div class="algorithm-text"><i style="margin-left: 31px;"></i>Доказательство симметрии кривой относительно
+							прямой $$y=2$$ аналогично предыдущему примеру.</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center">
+
+						<div class="col-xs-12 col-md-9 col-lg-8 col-xl-6 text-justify plr-modify">
+							<div class="parametric-example-column column1">
+								<div class="row justify-content-start">
+									<div class="symmetrySecond1" onclick="showSymmetry3();">
+										<p id="ceilSymmetry3" class="symmetryCheck3">Показать симметрию относительно прямой$$\;y=2$$</p>
+									</div>
+									<div class="symmetrySecond2" onclick="showSymmetry4();">
+										<p id="ceilSymmetry4" class="symmetryCheck4 hidden">Показать симметрию относительно точки$$\;(0.5,2)$$</p><!--change dot-->
+									</div>
+								</div>
+								<div id="bigParametricPlotSymmetry2" class="jxgbox"></div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-9 col-lg-8 col-xl-6 text-justify plr-modify">
+							<div class="parametric-example-column column2">
+								<div class="row justify-content-center">
+									<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-vl-1" id="tLabel">
+										<p><span class="red">$$t$$</span></p>
+									</div>
+									<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 col-vl-11">
+										<input type="range" id="tSlider3" class="slider" min="0" max="400" step="1" value="0" oninput="draw2();">
+										<span class="slider-dot slider-dot--11 slider-dot--hollow slider-dot--tSlider3">
+											<span class="dot-label">$$-\pi$$</span>
+										</span>
+										<span class="slider-dot slider-dot--12 slider-dot--filled slider-dot--tSlider3">
+											<span class="dot-label">$$-\frac{3\pi}{4}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--13 slider-dot--hollow slider-dot--tSlider3">
+											<span class="dot-label">$$-\frac{\pi}{2}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--14 slider-dot--hollow slider-dot--tSlider3">
+											<span class="dot-label">$$0$$</span>
+										</span>
+										<span class="slider-dot slider-dot--15 slider-dot--hollow slider-dot--tSlider3">
+											<span class="dot-label">$$\frac{\pi}{2}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--16 slider-dot--hollow slider-dot--tSlider3">
+											<span class="dot-label">$$\pi$$</span>
+										</span>
+									</div>
+								</div>
+								<div id="bigParametricPlot2" class="jxgbox"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="parametric-example-footer">
+					<div class="row"><a href="parametric-scheme.html">
+							<div class="parametric-example-prev" title="Схема построения"><i class="fa fa-angle-left"></i></div>
+						</a></div>
+				</div>
+
+			</header>
+		</div>
+	</div>
+
+	<div class="top" title="Наверх"><i class="fa fa-angle-double-up"></i></div>
+
+	<script src="js/scripts.min.js"></script>
+
+</body>
+
+</html>

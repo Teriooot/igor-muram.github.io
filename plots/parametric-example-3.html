@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<!-- <base href="/"> -->
 
-	<title>Пример</title>
+	<title>Пример 3</title>
 	<meta name="description" content="">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -125,9 +125,8 @@
 
 				<div class="row justify-content-center">
 					<div class="col-lg-10 text-center">
-						<h1 class="parametric-example-h1">Пример</h1>
-						<p class="parametric-example-condition">$$x(t)=\frac{t^{2}}{1+t^{3}},\;\;$$ $$y(t)=\frac{t^{3}}{1+t^{3}}=$$
-							$$1-\frac{1}{1+t^{3}}$$</p>
+						<h1>Пример 3</h1>
+						<p class="parametric-example-condition2">$$x(t)=\frac{t^{2}}{1-t},\;\;$$ $$y(t)=\frac{t^{3}}{1-t^{2}}$$</p>
 					</div>
 				</div>
 
@@ -141,21 +140,31 @@
 										<p><span class="red">$$t$$</span></p>
 									</div>
 									<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 col-vl-11">
-										<input type="range" id="tSlider" class="slider" min="0" max="500" step="1" value="0" oninput="draw();">
-										<!--
-										<span class="slider-dot slider-dot--01 slider-dot--hollow">
+										<input type="range" id="tSliderExample3MainBoard" class="slider" min="0" max="694" step="1" value="0" oninput="scheduleDraw();">
+										<span class="slider-dot slider-dot--21 slider-dot--hollow slider-dot--tSliderExample3MainBoard">
 											<span class="dot-label">$$-\infty$$</span>
 										</span>
-										<span class="slider-dot slider-dot--02 slider-dot--filled">
+										<span class="slider-dot slider-dot--22 slider-dot--filled slider-dot--tSliderExample3MainBoard">
+											<span class="dot-label">$$-\sqrt{3}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--23 slider-dot--hollow slider-dot--tSliderExample3MainBoard">
+											<span class="dot-label">$$-1$$</span>
+										</span>
+										<span class="slider-dot slider-dot--24 slider-dot--filled slider-dot--tSliderExample3MainBoard">
 											<span class="dot-label">$$0$$</span>
 										</span>
-										<span class="slider-dot slider-dot--03 slider-dot--filled">
-											<span class="dot-label">$$\sqrt[3]{2}$$</span>
+										<span class="slider-dot slider-dot--25 slider-dot--hollow slider-dot--tSliderExample3MainBoard">
+											<span class="dot-label">$$1$$</span>
 										</span>
-										<span class="slider-dot slider-dot--04 slider-dot--hollow">
+										<span class="slider-dot slider-dot--26 slider-dot--filled slider-dot--tSliderExample3MainBoard">
+											<span class="dot-label">$$\sqrt{3}$$</span>
+										</span>
+										<span class="slider-dot slider-dot--27 slider-dot--filled slider-dot--tSliderExample3MainBoard">
+											<span class="dot-label">$$2$$</span>
+										</span>
+										<span class="slider-dot slider-dot--28 slider-dot--hollow slider-dot--tSliderExample3MainBoard">
 											<span class="dot-label">$$\infty$$</span>
 										</span>
-										-->
 									</div>
 								</div>
 								<div id="bigParametricPlot" class="jxgbox"></div>
@@ -179,126 +188,120 @@
 				<div class="parametric-example-table-container">
 					<div class="row justify-content-center">
 
-						<div class="col-xs-12 col-md-9 col-lg-8 col-xl-12 col-vl-8 col-sl-9" style="padding: 0;">
+						<div class="col-xs-12 col-md-12 col-lg-12 col-xl-12 col-vl-12 col-sl-12" style="padding: 0;">
 							<div class="row justify-content-start">
 								<div style="overflow-x:auto;">
-									<table id="parametric-example-table">
+									<table id="parametric-example-table" style="font-size: 16px;">
 										<tr>
 											<td style="padding-bottom: 6px; padding-top: 6px;">$$t$$</td>
 											<td style="padding-bottom: 6px; padding-top: 6px;">$$-\infty$$</td>
-											<td style="padding-bottom: 6px; padding-top: 6px;" class="blue-fill">$$(-\infty, -1)$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="blue-fill">$$\left(-\infty,-\sqrt{3}\right)$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;">$$-\sqrt{3}$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="red-fill">$$\left(-\sqrt{3},-1\right)$$</td>
 											<td style="padding-bottom: 6px; padding-top: 6px;" colspan="2">$$-1$$</td>
-											<td style="padding-bottom: 6px; padding-top: 6px;" class="green-fill">$$(-1, 0)$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="purple-fill">$$\left(-1,0\right)$$</td>
 											<td style="padding-bottom: 6px; padding-top: 6px;">$$0$$</td>
-											<td style="padding-bottom: 6px; padding-top: 6px;" class="purple-fill">$$(0, \sqrt[3]{2})$$</td>
-											<td style="padding-bottom: 6px; padding-top: 6px;">$$\sqrt[3]{2}$$</td>
-											<td style="padding-bottom: 6px; padding-top: 6px;" class="red-fill">$$(\sqrt[3]{2}, +\infty)$$
-											</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="green-fill">$$\left(0,1\right)$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" colspan="2">$$1$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="orange-fill">$$\left(1,\sqrt{3}\right)$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;">$$\sqrt{3}$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="cyan-fill">$$\left(\sqrt{3},2\right)$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;">$$2$$</td>
+											<td style="padding-bottom: 6px; padding-top: 6px;" class="pink-fill">$$\left(2,+\infty\right)$$</td>
 											<td style="padding-bottom: 6px; padding-top: 6px;">$$+\infty$$</td>
 										</tr>
 										<tr>
 											<td>$$x$$</td>
-											<td>$$-0$$</td>
-											<td class="blue-fill"></td>
-											<td>$$-\infty$$</td>
 											<td>$$+\infty$$</td>
-											<td class="green-fill"></td>
-											<td>$$0$$</td>
-											<td class="purple-fill"></td>
-											<td style="padding-bottom: 5px; padding-top: 5px;">$$\frac{{\sqrt[3]{4}}}{3} \approx 0.53$$</td>
+											<td class="blue-fill"></td>
+											<td>$$\approx 1.098$$</td>
 											<td class="red-fill"></td>
-											<td>$$+0$$</td>
+											<td colspan="2">$$\frac{1}{2}$$</td>
+											<td class="purple-fill"></td>
+											<td>$$0$$</td>
+											<td class="green-fill"></td>
+											<td>$$+\infty$$</td><td>$$-\infty$$</td>
+											<td class="orange-fill"></td>
+											<td>$$\approx -4.098$$</td>
+											<td class="cyan-fill"></td>
+											<td>$$-4$$</td>
+											<td class="pink-fill"></td>
+											<td>$$-\infty$$</td>
 										</tr>
 										<tr>
 											<td>$$y$$</td>
-											<td>$$1+$$</td>
-											<td class="blue-fill"></td>
 											<td>$$+\infty$$</td>
-											<td>$$-\infty$$</td>
-											<td class="green-fill"></td>
-											<td>$$0$$</td>
-											<td class="purple-fill"></td>
-											<td style="padding-bottom: 5px; padding-top: 5px;">$$\frac{2}{3} \approx 0.67$$</td>
+											<td class="blue-fill"></td>
+											<td>$$\approx 2.598$$</td>
 											<td class="red-fill"></td>
-											<td>$$1-$$</td>
+											<td>$$+\infty$$</td><td>$$-\infty$$</td>
+											<td class="purple-fill"></td>
+											<td>$$0$$</td>
+											<td class="green-fill"></td>
+											<td>$$+\infty$$</td><td>$$-\infty$$</td>
+											<td class="orange-fill"></td>
+											<td>$$\approx -2.598$$</td>
+											<td class="cyan-fill"></td>
+											<td>$$\approx -2.667$$</td>
+											<td class="pink-fill"></td>
+											<td>$$-\infty$$</td>
 										</tr>
 										<tr>
 											<td>$$y_{x}^{'}$$</td>
 											<td class="cross"></td>
-											<td class="blue-fill" style="font-size: 34px;">&#8600;</td>
-											<td class="cross" colspan="2"></td>
-											<td class="green-fill" style="font-size: 34px;">&#8600;</td>
+											<td class="blue-fill arrow">&#8599;</td>
 											<td>$$0$$</td>
-											<td class="purple-fill" style="font-size: 34px;">&#8599;</td>
+											<td class="red-fill arrow">&#8600;</td>
+											<td colspan="2">$$\infty$$</td>
+											<td class="purple-fill arrow">&#8600;</td>
+											<td>$$0$$</td>
+											<td class="green-fill arrow">&#8599;</td>
+											<td class="cross" colspan="2"></td>
+											<td class="orange-fill arrow">&#8599;</td>
+											<td>$$0$$</td>
+											<td class="cyan-fill arrow">&#8600;</td>
 											<td>$$\infty$$</td>
-											<td class="red-fill" style="font-size: 34px;">&#8600;</td>
+											<td class="pink-fill arrow">&#8599;</td>
 											<td class="cross"></td>
 										</tr>
 										<tr>
 											<td>$$y_{xx}^{''}$$</td>
 											<td></td>
-											<td class="blue-fill" style=" font-size: 17px; padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$
-											</td>
+											<td class="blue-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$</td>
+											<td></td>
+											<td class="red-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$</td>
 											<td colspan="2"></td>
-											<td class="green-fill" style="font-size: 17px; padding-bottom: 6px; padding-top: 6px;">$$\bigcap$$
-											</td>
+											<td class="purple-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcap$$</td>
 											<td></td>
-											<td class="purple-fill" style="font-size: 17px; padding-bottom: 6px; padding-top: 6px;">
-												$$\bigcup$$</td>
+											<td class="green-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$</td>
+											<td colspan="2"></td>
+											<td class="orange-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcap$$</td>
 											<td></td>
-											<td class="red-fill" style="font-size: 17px; padding-bottom: 6px; padding-top: 6px;">$$\bigcap$$
-											</td>
+											<td class="cyan-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcap$$</td>
+											<td></td>
+											<td class="pink-fill" style="padding-bottom: 6px; padding-top: 6px;">$$\bigcup$$</td>
 											<td></td>
 										</tr>
 										<tr>
-											<td style="line-height: 1.2; font-size: 19px; padding-bottom: 6px; padding-top: 6px;">Особые точки
+											<td style="line-height: 1.2; padding-bottom: 6px; padding-top: 6px;">Особые точки
 												и уравнения асимптот</td>
-											<td style="line-height: 1.2; font-size: 19px; padding-bottom: 6px; padding-top: 6px;">Выколотая
-												точка</td>
+											<td id="textAsymptote1" class="text-weight-bolder">Асимптота $$y=x+1$$</td>
 											<td class="blue-fill"></td>
-											<td colspan="2">$$y = -x + \frac{1}{3}$$</td>
-											<td class="green-fill"></td>
-											<td style="line-height: 1.2; font-size: 19px; padding-bottom: 6px; padding-top: 6px;">Точка
-												возврата</td>
-											<td class="purple-fill"></td>
-											<td style="line-height: 1.2; font-size: 19px; padding-bottom: 6px; padding-top: 6px;">Вершина</td>
+											<td>Вершина</td>
 											<td class="red-fill"></td>
-											<td style="line-height: 1.2; font-size: 19px; padding-bottom: 6px; padding-top: 6px;">Выколотая
-												точка</td>
+											<td colspan="2" id="textAsymptote2" class="text-weight-normal">Асимптота $$x=\frac{1}{2}$$</td>
+											<td class="purple-fill"></td>
+											<td>Точка возврата</td>
+											<td class="green-fill"></td>
+											<td colspan="2" id="textAsymptote3" class="text-weight-normal">Асимптота $$y=\frac{x}{2}-\frac{1}{4}$$</td>
+											<td class="orange-fill"></td>
+											<td>Вершина</td>
+											<td class="cyan-fill"></td>
+											<td>Вершина</td>
+											<td class="pink-fill"></td>
+											<td id="textAsymptote4" class="text-weight-normal">Асимптота $$y=x+1$$</td>
 										</tr>
 									</table>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-md-9 col-lg-8 col-xl-6 col-vl-4 col-sl-3" style="padding: 0;">
-							<div id="parametric-example-calc" class="row justify-content-center">
-								<div class="container">
-									<div class="row">
-										<div class="col-xs-12 col-sl-12">$$x(t)=\frac{t^{2}}{1+t^{3}}$$</div>
-										<div class="col-xs-12 col-sl-12">$$y(t)=\frac{t^{3}}{1+t^{3}}=$$ $$1-\frac{1}{1+t^{3}}$$</div>
-										<div class="col-xs-12 col-sl-12 poster poster-1">$$y_{x}^{'}=\frac{3t}{2-t^{3}}$$
-											<div class="info"><i class="fas fa-angle-down"></i></div>
-											<div class="descr">$$y_{x}^{'}=\frac{3t^{2}}{(1+t^{3})^{2}}:$$ $$\frac{2t(1+t^{3})-3t^{2}\cdot
-												t^{2}}{(1+t^{3})^{2}}=$$ $$\frac{3t^{2}}{2t-t^{4}}=$$ $$\frac{3t}{2-t^{3}}$$<br></div>
-										</div>
-										<div class="col-xs-12 col-sl-12 poster poster-2">$$y_{xx}^{''}=\frac{6\cdot (1+t^{3})^{3}}{t\cdot
-											(2-t^{3})^{3}}$$
-											<div class="info"><i class="fas fa-angle-down"></i></div>
-											<div class="descr-up">$$y_{xx}^{''}=\frac{3\cdot (2-t^{3})+3t^{2}\cdot 3t}{(2-t^{3})^{2}}:$$
-												$$\frac{2t-t^{4}}{(1+t^{3})^{2}}=$$ $$\frac{(6+6t^{3})}{(2-t^{3})^{2}}\cdot
-												\frac{(1+t^{3})^{2}}{t(2-t^{3})}=$$ $$\frac{6\cdot (1+t^{3})^{3}}{t\cdot (2-t^{3})^{3}}$$<br>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sl-12 poster poster-3">Асимптоты: $$\:$$ $$y=-x+\frac{1}{3}$$
-											<div class="info"><i class="fas fa-angle-down"></i></div>
-											<div class="descr-up">$$y=kx+b$$<br>$$k=\lim_{t\rightarrow -1}\left (
-												\frac{t^{3}}{1+t^{3}}:\frac{t^{2}}{1+t^{3}} \right )=$$ $$\lim_{t\rightarrow
-												-1}t=-1$$<br>$$b=\lim_{t\rightarrow -1}\left ( \frac{t^{3}}{1+t^{3}}+\frac{t^{2}}{1+t^{3}}
-												\right )=$$ $$\lim_{t\rightarrow -1}\left (\frac{t^{2}}{t^{2}-t+1} \right )=\frac{1}{3}$$<br>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

@@ -394,6 +394,7 @@ button:disabled, .button.disabled
 	padding-top: 15px
 
 .slider 
+	position: relative
 	appearance: none
 	width: 100% 
 	height: 4px 
@@ -402,7 +403,7 @@ button:disabled, .button.disabled
 	opacity: 0.7
 	transition: opacity .2s
 	cursor: pointer
-	
+
 .slider:hover 
 	opacity: 1
 
@@ -410,6 +411,7 @@ button:disabled, .button.disabled
 	opacity: 1
 
 .slider::-webkit-slider-thumb
+	position: relative
 	appearance: none
 	width: 15px
 	height: 15px
@@ -607,6 +609,54 @@ button:disabled, .button.disabled
 	i
 		color: $accent
 
+$dot-size: 14px
+$dot-color-filled: #000
+$dot-color-hollow: #fff
+$dot-border: 2px solid #000
+
+.slider-dot
+	position: absolute
+	top: 39.75%
+	width: $dot-size
+	height: $dot-size
+	border-radius: 50%
+	transform: translate(-50%, -50%)
+	transition: background-color 0.2s, border-color 0.2s
+	z-index: 2
+	pointer-events: none
+	&--filled
+		background-color: $dot-color-filled
+		border: $dot-border
+	&--hollow
+		background-color: $dot-color-hollow
+		border: $dot-border
+
+.slider-dot
+	position: absolute
+	top: 39.75%
+	width: $dot-size
+	height: $dot-size
+	border-radius: 50%
+	transform: translate(-50%, -50%)
+	transition: background-color 0.2s, border-color 0.2s
+	z-index: 2
+	pointer-events: none
+	&--filled
+		background-color: $dot-color-filled
+		border: $dot-border
+	&--hollow
+		background-color: $dot-color-hollow
+		border: $dot-border
+	&--tSlider2, &--tSlider3, &--tSliderExample3MainBoard
+		top: 20.75%
+
+.dot-label
+	position: absolute
+	top: 100%
+	left: 50%
+	transform: translateX(-50%)
+	white-space: nowrap
+
 #tSlider
 	margin-bottom: 25px
 	margin-top: 15px
@@ -618,6 +668,69 @@ button:disabled, .button.disabled
 	background: linear-gradient(to right, #1e28ff 39.9%, #000000 39.9%, #000000 40.1%, #007800 40.1%, #007800 59.9%, #000000 59.9%, #000000 60.1%, #6535bf 60.1%, #6535bf 79.9%, #000000 79.9%, #000000 80.1%, #ff0000 80.1%)
 	&:hover
 		cursor: pointer
+
+.slider-dot--01
+	left: 9px
+.slider-dot--02
+	left: 59.9%
+.slider-dot--03
+	left: 79.9%
+.slider-dot--04
+	right: -5px
+
+#tSlider2, #tSlider3
+	margin-bottom: 65px
+	margin-top: 15px
+	opacity: 1
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#5353d1, endColorstr=#5353d1)"
+	background: -webkit-linear-gradient(left, #7c83ff 12.4%, #002897 12.5%, #002897 24.9%, #ff0000 25%, #ff0000 49.9%, #ff0000 50%, #ff0000 74.9%, #7c83ff 75%)
+	&:hover
+		cursor: pointer
+
+.slider-dot--11
+	left: 9px
+.slider-dot--12
+	left: 12.5%
+.slider-dot--13
+	left: 25%
+.slider-dot--14
+	left: 50%
+.slider-dot--15
+	left: 75%
+.slider-dot--16
+	right: -5px
+
+#tSliderExample3MainBoard
+	margin-bottom: 65px
+	margin-top: 15px
+	opacity: 1
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#5353d1, endColorstr=#5353d1)"
+	background: -webkit-linear-gradient(left, #000dff 21.427%,
+		#ff0000 21.428%, #ff0000 35.713%,
+		#9900ff 35.714%, #9900ff 49.999%,
+		#00ff00 50%, #00ff00 64.284%,
+		#ffa600 64.285%, #ffa600 78.570%,
+		#00f7ff 78.571%, #00f7ff 82.141%,
+		#ff00c8 82.142%)
+	&:hover
+		cursor: pointer
+
+.slider-dot--21
+	left: 9px
+.slider-dot--22
+	left: 21.428%
+.slider-dot--23
+	left: 35.714%
+.slider-dot--24
+	left: 50%
+.slider-dot--25
+	left: 64.285%
+.slider-dot--26
+	left: 78.571%
+.slider-dot--27
+	left: 82.142%
+.slider-dot--28
+	right: -5px
 
 #tLabel
 	padding-right: 0
@@ -662,15 +775,22 @@ button:disabled, .button.disabled
 	text-align: left
 	margin-bottom: 5px
 
-.mirrorUD, .mirrorLR, .moduleUD, .moduleLR
+.mirrorUD, .mirrorLR, .moduleUD, .moduleLR, .symmetry, .symmetry2
 	text-align: left
 	margin-bottom: 0
 
-.mirrorUDCheck, .mirrorLRCheck, .moduleUDCheck, .moduleLRCheck, .example1Check, .example2Check
+.mirrorUDCheck, .mirrorLRCheck, .moduleUDCheck, .moduleLRCheck, .example1Check, .example2Check, .symmetryCheck1, .symmetryCheck2, .symmetryCheck3, .symmetryCheck4
 	cursor: pointer
 	padding-left: 30px
 	display: block
 	position: relative
+
+.hidden
+	visibility: hidden
+	position: absolute
+	pointer-events: none
+	height: 0
+	overflow: hidden
 
 .ceilMirrorUD, .ceilMirrorLR, .ceilModuleUD, .ceilModuleLR, .ceilExample1, .ceilExample2
 	position: absolute
@@ -682,7 +802,31 @@ button:disabled, .button.disabled
 	left: 0
 	border-radius: 3px
 	transition: .2s
-	
+
+.symmetryCheck1::before, .symmetryCheck2::before, , .symmetryCheck3::before, .symmetryCheck4::before
+	content: ''
+	display: inline-block
+	cursor: pointer
+	border: 2px solid #c4c9c9
+	width: 18px
+	height: 18px
+	top: 7px
+	left: 0
+	border-radius: 3px
+	margin-right: 10px
+	transition: .2s
+
+.symmetryCheck1.is-checked2::before, .symmetryCheck2.is-checked2::before, .symmetryCheck3.is-checked2::before, .symmetryCheck4.is-checked2::before
+	border-top: 2px solid transparent
+	border-left: 2px solid transparent
+	border-right: 2px solid #408cc2
+	border-bottom: 2px solid #408cc2
+	transform: rotate(40deg)
+	width: 12px
+	height: 22px
+	transform-origin: 100% 100%
+	margin-right: 16px
+
 .is-checked
 	border-top: 2px solid transparent
 	border-left: 2px solid transparent
@@ -703,6 +847,13 @@ button:disabled, .button.disabled
 	margin: 11px 0
 	border: 2px solid black
 	height: 96%
+
+.parametric-example-column
+	display: flex
+	flex-direction: column
+
+#smallParametricPlot, #bigParametricPlot, #bigParametricPlot2, #bigParametricPlotSymmetry, #bigParametricPlotSymmetry2
+	margin-top: auto
 
 .transform-column, .parametric-example-column, .straight-column, .parabola-column, .hyperbole-column, .power-column, .exponential-column, .trigonometric-column, .hyperbolic-column, .explicit-example-column
 	padding: 11px 19px 5px
@@ -786,6 +937,10 @@ button:disabled, .button.disabled
 	font-size: 25px
 	margin-bottom: 0
 
+.parametric-example-condition2
+	font-size: 25px
+	margin-bottom: 0
+
 .parametric-example-container, .parametric-scheme-container
 	padding-left: 68px
 	padding-right: 68px
@@ -795,7 +950,6 @@ button:disabled, .button.disabled
 	padding-right: 84px
 	width: 100%
 	margin-top: 11px
-  height: 96%
 
 .parametric-scheme-table-container
 	padding-left: 16px
@@ -829,17 +983,36 @@ button:disabled, .button.disabled
 	td
 		padding: 15px 20px
 
+.arrow
+	font-size: 34px
+	// font-size: 24px
+
 .purple-fill
 	background-color: rgb(155, 124, 214)
 
 .red-fill
 	background-color: rgb(254, 85, 85)
 
+.pink-fill
+	background-color: rgb(216, 113, 211)
+
 .green-fill
 	background-color: rgb(146, 209, 79)
 
+.orange-fill
+	background-color: rgb(228, 160, 33)
+
+.cyan-fill
+	background-color: rgb(33, 221, 228)
+
 .blue-fill
 	background-color: rgb(1, 176, 241)
+
+.blue-fill2
+	background-color: #9298ff
+
+.blue-fill3
+	background-color: #597ee2
 
 .white-fill
 	background-color: #fff
@@ -895,11 +1068,40 @@ button:disabled, .button.disabled
 			#MJXc-Node-803, #MJXc-Node-817, #MJXc-Node-862
 				font-size: 23px !important
 
+#parametric-example-calc2
+	height: 100%
+	margin-top: 10px
+	margin-bottom: 20px
+	border: 2px solid #000
+	padding-top: 15px
+	padding-bottom: 23px
+	text-align: center
+	.poster
+		font-size: 23.5px
+	.poster-1
+		.descr
+			font-size: 22px
+	.poster-2
+		.descr-up
+			font-size: 22px
+	.poster-3
+		.descr-up
+			font-size: 22px
+	.poster-4
+		.descr-up
+			font-size: 22px
+	.poster-5
+		.descr-up
+			font-size: 22px
+	.poster-6
+		.descr-up
+			font-size: 22px
+
 .smallParametricTitle
 	margin-top: -3px
 	margin-bottom: 15px
 
-#smallParametricPlot, #bigParametricPlot
+#smallParametricPlot, #bigParametricPlot, #bigParametricPlot2, #bigParametricPlotSymmetry, #bigParametricPlotSymmetry2
 	height: 36vh
 	margin-bottom: 15px
 
@@ -1101,5 +1303,19 @@ button:disabled, .button.disabled
 .asymptotes-example-3-container
 	#MJXc-Node-317
 		margin-top: 0
+
+.text-weight-normal
+	font-weight: normal
+
+.text-weight-bolder
+	font-weight: bolder
+
+.text-transparent
+	opacity: 0.2
+	transition: opacity 0.2s
+
+.text-visible
+	opacity: 1
+	transition: opacity 0.2s
 
 @import "media" // Always at the end
