@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8" />
+	<!-- <base href="/"> -->
+
+	<title>Пример 1. Асимптоты функции.</title>
+	<meta name="description" content="" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+	<link rel="manifest" href="img/favicon/site.webmanifest" />
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#003949" />
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" />
+
+	<meta name="msapplication-TileColor" content="#ffc40d" />
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
+	<meta name="theme-color" content="#ffffff" />
+
+	<!-- Custom Browsers Color Start -->
+	<meta name="theme-color" content="#000" />
+	<!-- Custom Browsers Color End -->
+
+	<link rel="stylesheet" href="css/main.min.css" />
+</head>
+
+<body>
+	<div class="preloader">
+		<div class="pulse"></div>
+	</div>
+
+	<div id="my-page">
+		<div id="my-header">
+			<header class="site-header">
+				@@include('./parts/my-menu.html')
+
+				<div class="row justify-content-center">
+					<div class="col-lg-10 text-center">
+						<h1>Явное задание</h1>
+					</div>
+				</div>
+
+				<div class="asymptotes-example-container">
+					<div class="algorithm-text text-justify">
+						Найти асимп&shy;тоты графика функции
+						<span class="blue">
+							$$\:$$ $$y=\sqrt{\frac{x^{3}}{x-2}}=\;$$ $$\left | x \right |\cdot
+							\sqrt{\frac{x}{x-2}}$$
+						</span>
+						<br />
+						Функция опре&shy;де&shy;лена на множестве $$( -\infty,\:0 ]\cup \left ( 2,\:+\infty
+						\right )$$. Функция имеет верти&shy;кальную асимп&shy;тоту $$$$ $$x=2$$, $$$$ т.к.
+						$$\lim_{\;x\rightarrow 2+}y(x)=\infty$$. Функция не имеет верти&shy;кальную
+						асимп&shy;тоту $$$$ $$x=0$$, $$$$ т.к. $$\lim_{\;x\rightarrow 0-}y(x)=0$$. Проверим
+						наличие наклонных асимптот:
+					</div>
+
+					<div class="row">
+						<div class="col-7 algorithm-text text-justify">
+							<br />
+							<b>1.</b> $$$$ При $$\;$$ $$x\rightarrow +\infty$$: $$\;$$ $$k\:=\lim_{x\rightarrow
+							+\infty}\frac{y(x)}{x}=\;$$ $$\lim_{x\rightarrow +\infty}\sqrt{\frac{x}{x-2}}=1$$,
+							<br /><br />
+							$$b=\lim_{x\rightarrow +\infty}\left ( y(x) - kx \right )=\;$$ $$\lim_{x\rightarrow
+							+\infty}x\cdot \left ( \sqrt{\frac{x}{x-2}} - 1 \right )=1$$
+							<br /><br />
+							<b>2.</b> $$$$ При $$\;$$ $$x\rightarrow -\infty$$: $$\;$$ $$k\:=\lim_{x\rightarrow
+							-\infty}\frac{y(x)}{x}=\;$$ $$\lim_{x\rightarrow -\infty}\left ( -
+							\sqrt{\frac{x}{x-2}} \right )=-1$$, <br /><br />
+							$$b=\lim_{x\rightarrow -\infty}\left ( y(x) - kx \right )=\;$$ $$\lim_{x\rightarrow
+							-\infty}x\cdot \left ( - \sqrt{\frac{x}{x-2}} + 1 \right )=-1$$
+							<br /><br />
+						</div>
+
+						<div class="col-5">
+							<div id="asymptotesExample1Plot" class="jxgbox"></div>
+						</div>
+					</div>
+
+					<div class="algorithm-text text-justify">
+						Ответ: $$$$ Верти&shy;кальная асимп&shy;тота $$$$ $$x=2$$, $$$$ наклонные
+						асимп&shy;тоты $$$$ $$y=x+1\;$$ при $$$$ $$x\rightarrow +\infty\;$$ и $$\:$$
+						$$y=-x-1\;$$ при $$$$ $$x\rightarrow -\infty$$.
+					</div>
+
+					<div class="asymptotes-example-nav">
+						<a href="asymptotes.html">
+							<div class="col-xs-1 asymptotes-example-prev" title="Теория">
+								<i class="fa fa-angle-left"></i>
+							</div>
+						</a>
+						<a href="asymptotes-example-2.html">
+							<div class="col-xs-1 asymptotes-example-next" title="Пример 2">
+								<i class="fa fa-angle-right"></i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</header>
+		</div>
+	</div>
+
+	<div class="top" title="Наверх"><i class="fa fa-angle-double-up"></i></div>
+
+	<script src="js/scripts.min.js"></script>
+</body>
+
+</html>
