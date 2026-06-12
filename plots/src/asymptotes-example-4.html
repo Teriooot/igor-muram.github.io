@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<!-- <base href="/"> -->
+
+	<title>Пример 4. Асимптоты функции.</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#003949">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico">
+
+	<meta name="msapplication-TileColor" content="#ffc40d">
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Custom Browsers Color Start -->
+	<meta name="theme-color" content="#000">
+	<!-- Custom Browsers Color End -->
+
+	<link rel="stylesheet" href="css/main.min.css">
+
+</head>
+
+<body>
+
+	<div class="preloader">
+		<div class="pulse"></div>
+	</div>
+
+	<div id="my-page">
+		<div id="my-header">
+			<header class="site-header">
+				@@include('./parts/my-menu.html')
+
+				<div class="row justify-content-center">
+					<div class="col-lg-10 text-center">
+						<h1>Параметрическое задание</h1>
+					</div>
+				</div>
+
+				<div class="asymptotes-example-container">
+					<div class="algorithm-text text-justify">
+						Найти асимп&shy;тоты кривой
+						<span class="blue">
+							$$\:$$ $$x=2\cdot ch\left ( t \right ),\;\;$$
+							$$y=3\cdot sh \left ( t \right )$$
+						</span>
+						<br>
+						$$x=2\cdot \frac{e^{t}+e^{-t}}{2}=\;$$
+						$$e^{t}+e^{-t},\;\;$$
+						$$y=3\cdot \frac{e^{t}-e^{-t}}{2}$$. $$\;$$
+						Проверим наличие наклонных асимптот:
+						<br><br>
+					</div>
+
+					<div class="row">
+						<div class="col-8 algorithm-text">
+							<b>1.</b>$$\;$$При $$$$ $$t\rightarrow +\infty:$$ $$\;$$
+							$$x(t)\rightarrow +\infty\;$$ и $$\:$$ $$y(t)\rightarrow +\infty$$.
+							<br>
+							$$k\:=\lim_{t\rightarrow +\infty}\frac{y(t)}{x(t)}=\;$$
+							$$\lim_{t\rightarrow +\infty}\frac{3}{2}\cdot \frac{e^{t}-e^{-t}}{e^{t}+e^{-t}}=\frac{3}{2}$$
+							<br>
+							$$b=\lim_{t\rightarrow +\infty}\left ( y(t) - kx(t) \right )=\;$$
+							$$\lim_{t\rightarrow +\infty}\frac{3}{2}\cdot \left ( e^{t} - e^{-t} - \left ( e^{t}+e^{-t} \right )
+							\right )=0$$
+							<br><br>
+							<b>2.</b>$$\;$$При $$$$ $$t\rightarrow -\infty:$$ $$\;$$
+							$$x(t)\rightarrow +\infty\;$$ и $$\:$$ $$y(t)\rightarrow +\infty$$.
+							<br>
+							$$k\:=\lim_{t\rightarrow -\infty}\frac{y(t)}{x(t)}=\;$$
+							$$\lim_{t\rightarrow -\infty}\frac{3}{2}\cdot \frac{e^{t}-e^{-t}}{e^{t}+e^{-t}}=-\frac{3}{2}$$
+							<br>
+							$$b=\lim_{t\rightarrow -\infty}\left ( y(t) - kx(t) \right )=\;$$
+							$$\lim_{t\rightarrow -\infty}\frac{3}{2}\cdot \left ( e^{t} - e^{-t} + e^{t}+e^{-t} \right )=0$$
+							<br><br>
+						</div>
+
+						<div class="col-4">
+							<div id="asymptotesExample4Plot" class="jxgbox"></div>
+						</div>
+					</div>
+
+					<div class="algorithm-text text-justify">
+						Ответ: $$$$ Наклонные асимп&shy;тоты $$$$ $$y=\frac{3}{2}\cdot x\;$$ при $$$$ $$t\rightarrow +\infty\;$$
+						и $$\:$$ $$y=-\frac{3}{2}\cdot x\;$$ при $$$$ $$t\rightarrow -\infty$$.
+					</div>
+
+					<br>
+
+					<div class="asymptotes-example-nav examples-nav-end">
+						<a href="asymptotes-example-3.html">
+							<div class="col-xs-1 asymptotes-example-prev" title="Пример 3"><i class="fa fa-angle-left"></i></div>
+						</a>
+					</div>
+				</div>
+
+			</header>
+		</div>
+	</div>
+
+	<div class="top" title="Наверх"><i class="fa fa-angle-double-up"></i></div>
+
+	<script src="js/scripts.min.js"></script>
+
+</body>
+
+</html>

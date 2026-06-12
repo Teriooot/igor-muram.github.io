@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<!-- <base href="/"> -->
+
+	<title>Пример 2. Выпуклость функции.</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#003949">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico">
+
+	<meta name="msapplication-TileColor" content="#ffc40d">
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Custom Browsers Color Start -->
+	<meta name="theme-color" content="#000">
+	<!-- Custom Browsers Color End -->
+
+	<link rel="stylesheet" href="css/main.min.css">
+
+</head>
+
+<body>
+
+	<div class="preloader">
+		<div class="pulse"></div>
+	</div>
+
+	<div id="my-page">
+		<div id="my-header">
+			<header class="site-header">
+				@@include('./parts/my-menu.html')
+
+				<div class="row justify-content-center">
+					<div class="col-lg-10 text-center">
+						<h1 class="convex-title-main">Явное задание функции $$y(x)$$</h1>
+					</div>
+				</div>
+
+				<div class="convex-example-container">
+					<div class="row">
+
+						<div class="col-sm-12 col-vl-8 algorithm-text">
+							<span class="blue">$$y=\frac{1}{1 - x^{2}}$$</span>
+							<br><br>
+							<span class="green">$$y''=\:$$</span>
+							$$\left ( \frac{2x}{\left ( 1 - x^{2} \right )^{2}} \right )'=\;$$
+							$$\frac{2\left ( 1 - x^{2} \right )^{2}-2x\cdot 2\cdot \left ( 1 - x^{2} \right )\cdot \left ( -2x \right
+							)}{\left ( 1 - x^{2} \right )^{4}}=\;$$<br>
+							$$=\frac{2\left ( 1 - x^{2} \right )+8x^{2}}{\left ( 1 - x^{2} \right )^{3}}=\;$$
+							$$2\cdot \frac{1+3x^{2}}{\left ( 1 - x^{2} \right )^{3}}=\;$$
+							<span class="green">$$-2\cdot \frac{1+3x^{2}}{\left ( x-1 \right )^{3}\cdot \left ( x+1 \right
+								)^{3}}$$</span>
+							<br><br>
+
+							<div id="convexExample2Interval" class="jxgbox"></div>
+
+						</div>
+
+						<div class="col-sm-12 col-vl-4">
+							<div id="convexExample2Plot" class="jxgbox"></div>
+						</div>
+
+						<div class="algorithm-text text-justify" style="padding-left: 15px;">
+							Ответ: $$$$ Функция $$$$<span class="blue">$$y(x)$$</span>$$$$ выпукла вверх на проме&shy;жутках $$\left (
+							-\infty,\: -1 \right )\cup \left ( 1,\: +\infty \right )$$
+							и выпукла вниз на проме&shy;жутке $$\left ( -1,\: 1 \right )$$.
+							При этом $$$$ $$x=\pm 1$$ $$$$ не явля&shy;ются точками пере&shy;гиба, т.к. функция разрывна в этих
+							точках.
+							<br>
+						</div>
+
+					</div>
+
+					<div class="convex-example-nav examples-nav-end">
+						<a href="convex-example-1.html">
+							<div class="col-xs-1 convex-example-prev" title="Пример 1"><i class="fa fa-angle-left"></i></div>
+						</a>
+						<!-- <a href="convex-example-3.html"><div class="col-xs-1 convex-example-next" title="Пример 3"><i class="fa fa-angle-right"></i></div></a> -->
+					</div>
+				</div>
+
+			</header>
+		</div>
+	</div>
+
+	<div class="top" title="Наверх"><i class="fa fa-angle-double-up"></i></div>
+
+	<script src="js/scripts.min.js"></script>
+
+</body>
+
+</html>
